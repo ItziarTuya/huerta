@@ -177,6 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Aimeos provider class
+         */
+        Aimeos\Shop\ShopServiceProvider::class,
+
     ],
 
     /*
