@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\URL;
 
 class LoginController extends Controller
 {
@@ -20,12 +21,11 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    public function showLoginForm()
+    {
+        session(['url.intended' => url()->previous()]);
+        return view('auth.login');    
+    }
 
     /**
      * Create a new controller instance.
@@ -35,5 +35,20 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    
+    /**
+     * Redirect to previous url after login
+     * 
+     * @return void
+     */
+    protected function redirectTo()
+    {
+        if (session('url.intended')) {
+            return session('url.intended'); 
+        }
+
+        return 'list';
     }
 }
