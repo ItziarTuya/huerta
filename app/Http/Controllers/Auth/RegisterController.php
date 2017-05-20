@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class RegisterController extends Controller
 {
@@ -23,13 +25,6 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -37,6 +32,27 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function showRegistrationForm()
+    {
+        session(['url.intended' => url()->previous()]);
+        return view('auth.register');    
+    }
+
+
+    /**
+     * Redirect to previous url after login
+     * 
+     * @return void
+     */
+    protected function redirectTo()
+    {
+        if (session('url.intended')) {
+            return session('url.intended'); 
+        }
+
+        return 'list';
     }
 
     /**
@@ -66,6 +82,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            // TO DO ... Identificar si es productor(0) o consumidor(1) (boolean).
         ]);
     }
 }
