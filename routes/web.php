@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/producer/register', 'RegisterProducerController@showRegistrationForm');
+Route::post('/producer/register', 'RegisterProducerController@register')->name('producerRegister');
+Route::get('/producer/index', 'ProfileProducerController@index');

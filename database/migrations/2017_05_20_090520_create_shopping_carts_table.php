@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShoppingCartTable extends Migration
+class CreateShoppingCartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateShoppingCartTable extends Migration
      */
     public function up()
     {
-        Schema::create('shopping_cart', function (Blueprint $table) {
+        Schema::create('shopping_carts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
             $table->double('tax');
-            $table->enum('state', ['pending', 'discarded', 'confirmed']);
+            $table->integer('state');
             $table->timestamps();
         });
 
-        Schema::table('shopping_cart', function($table) {
-            $table->foreign('customer_id')->references('id')->on('customer');
+        Schema::table('shopping_carts', function($table) {
+            $table->foreign('customer_id')->references('id')->on('users');
         });
     }
 

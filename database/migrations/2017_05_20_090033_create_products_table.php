@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('product', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('producer_id')->unsigned();
             $table->string('name');
@@ -25,8 +25,8 @@ class CreateProductTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('product', function($table) {
-            $table->foreign('producer_id')->references('id')->on('producer');
+        Schema::table('products', function($table) {
+            $table->foreign('producer_id')->references('id')->on('users');
         });
     }
 

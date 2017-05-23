@@ -52,7 +52,7 @@ class RegisterController extends Controller
             return session('url.intended'); 
         }
 
-        return 'list';
+        return 'home';
     }
 
     /**
@@ -82,7 +82,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            // TO DO ... Identificar si es productor(0) o consumidor(1) (boolean).
+            'role' => 1,
         ]);
     }
 }

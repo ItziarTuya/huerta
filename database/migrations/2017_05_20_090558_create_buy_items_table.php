@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBuyItemTable extends Migration
+class CreateBuyItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBuyItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('buy_item', function (Blueprint $table) {
+        Schema::create('buy_items', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('shopping_cart_id')->unsigned();
             $table->integer('product_id')->unsigned();
@@ -21,9 +21,9 @@ class CreateBuyItemTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('buy_item', function($table) {
-            $table->foreign('shopping_cart_id')->references('id')->on('shopping_cart');
-            $table->foreign('product_id')->references('id')->on('product');
+        Schema::table('buy_items', function($table) {
+            $table->foreign('shopping_cart_id')->references('id')->on('shopping_carts');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
