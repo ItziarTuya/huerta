@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('producer_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('description');
             $table->string('picture');
@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
         });
 
         Schema::table('products', function($table) {
-            $table->foreign('producer_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

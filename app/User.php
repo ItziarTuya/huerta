@@ -41,4 +41,12 @@ class User extends Authenticatable
     {
         return $this->role == 3;
     }
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function products()
+    {
+        return $this->hasMany('App\Product');
+    }
 }

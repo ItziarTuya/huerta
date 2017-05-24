@@ -15,14 +15,14 @@ class CreateShoppingCartsTable extends Migration
     {
         Schema::create('shopping_carts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('customer_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->double('tax');
             $table->integer('state');
             $table->timestamps();
         });
 
         Schema::table('shopping_carts', function($table) {
-            $table->foreign('customer_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
