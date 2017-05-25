@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Producer;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ProfileProducerController extends Controller
+class ProfileController extends Controller
 {
 
     /**

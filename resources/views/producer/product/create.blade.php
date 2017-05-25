@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 	<h1>Crear Producto</h1>
-	<form class="form-horizontal" role="form" method="POST" action="{{ route('productStore') }}">
+	<form class="form-horizontal" role="form" method="POST" action="{{ route('producer.product.store') }}">
 	    {{ csrf_field() }}
 
 	    <div class="form-group">

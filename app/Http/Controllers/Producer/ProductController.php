@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Producer;
 
 use App\Product;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,7 +26,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('product.index', ['products' => Auth::user()->products]);
+        return view('producer.product.index', ['products' => Auth::user()->products]);
     }
 
     /**
@@ -35,7 +36,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        return view('producer.product.create');
     }
 
     /**
@@ -57,7 +58,7 @@ class ProductController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        return redirect()->route('productIndex');
+        return redirect()->route('producer.products');
     }
 
     /**

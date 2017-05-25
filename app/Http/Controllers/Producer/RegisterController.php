@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Producer;
 
+use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\RegisterController as RegisterBase;
 use Illuminate\Support\Facades\Auth;
 
-class RegisterProducerController extends RegisterController
+class RegisterController extends RegisterBase
 {
 
 	public function showRegistrationForm()
