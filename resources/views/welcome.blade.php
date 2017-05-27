@@ -29,8 +29,6 @@
                         @endif
                     @else
                         <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                        <a href="{{ route('producer.register') }}">Register Producer</a>
                     @endif
                 </div>
             @endif
@@ -38,15 +36,15 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    La huerta
+                   Orchard
                 </div>
+                <p>Sing up as:</p>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="{{ route('producer.register') }}">Producer</a>
+                    <a href="{{ route('register') }}">Consumer</a>
                 </div>
+
             </div>
         </div>
         <script src="{{ asset('js/app.js') }}"></script>
