@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Producer;
+namespace huerta\Http\Controllers\Producer;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use huerta\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {

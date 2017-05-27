@@ -5,10 +5,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Huerta</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
+        <!-- favicon -->
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+        <link rel="icon" type="image/gif" href="{{ asset('animated_favicon1.gif') }}">
+
 
         <!-- Styles -->
         <style>
@@ -19,6 +24,7 @@
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
+                left:0;
             }
 
             .full-height {
@@ -61,7 +67,10 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+                position: relative;
             }
+
+
         </style>
     </head>
     <body>
@@ -82,9 +91,10 @@
                 </div>
             @endif
 
+
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    La huerta
                 </div>
 
                 <div class="links">
@@ -95,5 +105,6 @@
                 </div>
             </div>
         </div>
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

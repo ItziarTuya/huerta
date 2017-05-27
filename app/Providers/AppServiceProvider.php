@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace huerta\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

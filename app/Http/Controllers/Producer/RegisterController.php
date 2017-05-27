@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Producer;
+namespace huerta\Http\Controllers\Producer;
 
 use App\Http\Controllers\Controller;
 use App\User;

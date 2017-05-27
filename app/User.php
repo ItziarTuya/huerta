@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace huerta;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -47,6 +47,6 @@ class User extends Authenticatable
      */
     public function products()
     {
-        return $this->hasMany('App\Product');
+        return $this->hasMany('huerta\Product');
     }
 }

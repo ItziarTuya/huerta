@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Huerta'),
 
     /*
     |--------------------------------------------------------------------------
@@ -171,11 +171,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        huerta\Providers\AppServiceProvider::class,
+        huerta\Providers\AuthServiceProvider::class,
+        // huerta\Providers\BroadcastServiceProvider::class,
+        huerta\Providers\EventServiceProvider::class,
+        huerta\Providers\RouteServiceProvider::class,
 
     ],
 

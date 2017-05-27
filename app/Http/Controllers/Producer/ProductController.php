@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Producer;
+namespace huerta\Http\Controllers\Producer;
 
-use App\Product;
-use App\Http\Controllers\Controller;
+use huerta\Product;
+use huerta\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -89,7 +89,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \huerta\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
@@ -100,7 +100,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \huerta\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
@@ -112,7 +112,7 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \huerta\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
@@ -123,7 +123,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \huerta\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
