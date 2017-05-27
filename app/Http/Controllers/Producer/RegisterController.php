@@ -2,9 +2,9 @@
 
 namespace huerta\Http\Controllers\Producer;
 
-use App\Http\Controllers\Controller;
-use App\User;
-use App\Http\Controllers\Auth\RegisterController as RegisterBase;
+use huerta\Http\Controllers\Controller;
+use huerta\User;
+use huerta\Http\Controllers\Auth\RegisterController as RegisterBase;
 use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends RegisterBase
@@ -13,7 +13,7 @@ class RegisterController extends RegisterBase
 	public function showRegistrationForm()
 	{
 	    session(['url.intended' => url()->previous()]);
-	    return view('/producer/register');
+	    return view('/producer.register');
 	}
 
 	/**
