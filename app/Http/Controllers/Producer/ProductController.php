@@ -66,20 +66,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $productData = $request->all();
-        $validator = $this->validator($productData);
-
-        if ($validator->fails()) {
-            return redirect()->route('producer.product.create')
-                ->withErrors($validator);
-        }
-
         Product::create([
             'name' => $productData['name'],
-            'description' => $productData['description'],
+            'description' => 'loquesea',
             'picture' => 'url',
-            'price' => $productData['price'],
-            'stock' => $productData['stock'],
-            'category' => $productData['category'],
+            'price' => 20.0,
+            'stock' => 2,
+            'category' => 'verduras',
             'user_id' => Auth::user()->id,
         ]);
 
@@ -94,7 +87,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('producer.product.show', ['product' => $product]);
     }
 
     /**
@@ -105,7 +98,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('producer.product.edit', ['product' => $product]);
     }
 
     /**
@@ -117,7 +110,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $productData = $request->all();
+        $validator = $this->validator($productData);
+
+        if ($validator->fails()) {
+            return redirect('/producer/product/'.$product->id.'/edit')
+                ->withErrors($validator);
+        }
+
+        $product->name = $productData['name'];
+        $product->description = $productData['description'];
+        $product->price = $productData['price'];
+        $product->stock = $productData['stock'];
+        $product->category = $productData['category'];
+        $product->save();
+
+        return redirect('/producer/product/'.$product->id.'/show');
     }
 
     /**
