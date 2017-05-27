@@ -18,6 +18,7 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('producer');
+        $this->middleware('productOwner', ['except' => ['index', 'create', 'store']]);
     }
 
     /**

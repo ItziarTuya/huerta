@@ -57,5 +57,6 @@ class Kernel extends HttpKernel
         'guest' => \huerta\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'producer' => \huerta\Http\Middleware\Producer::class,
+        'productOwner' => \huerta\Http\Middleware\ProductOwner::class,
     ];
 }
