@@ -24,7 +24,9 @@ Route::group(['namespace' => 'Producer', 'prefix' => 'producer'], function () {
 	Route::post('/register', 'RegisterController@register')->name('producer.register');
 	Route::get('/profile', 'ProfileController@index')->name('producer.profile');
 
-	Route::get('/products', 'ProductController@index')->name('producer.products');
-	Route::get('/product/create', 'ProductController@create')->name('producer.product.create');
-	Route::post('/product/create', 'ProductController@store')->name('producer.product.store');
+    Route::resource('products', 'ProductController', ['names' =>
+        ['index' => 'producer.products',
+        'create' => 'producer.product.create',
+        'store' => 'producer.product.store',]
+    ]);
 });
