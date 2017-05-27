@@ -6,6 +6,7 @@ use App\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -40,6 +41,23 @@ class ProductController extends Controller
     }
 
     /**
+     * Validate the create product form
+     *
+     * @param  array Product data
+     * @return @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'description' => 'string',
+            'price' => 'required|double',
+            'stock' => 'required|integer',
+            'category' => 'string',
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -48,13 +66,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $productData = $request->all();
+        $validator = $this->validator($productData);
+
+        if ($validator->fails()) {
+            return redirect()->route('producer.product.create')
+                ->withErrors($validator);
+        }
+
         Product::create([
             'name' => $productData['name'],
-            'description' => 'loquesea',
+            'description' => $productData['description'],
             'picture' => 'url',
-            'price' => 20.0,
-            'stock' => 2,
-            'category' => 'verduras',
+            'price' => $productData['price'],
+            'stock' => $productData['stock'],
+            'category' => $productData['category'],
             'user_id' => Auth::user()->id,
         ]);
 
