@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');     //Show only index to gests.
+        $this->middleware('auth');     //Show only index to gests. ???? no lo entiendo!!!
     }
 
     /**
