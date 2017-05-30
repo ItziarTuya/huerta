@@ -25,7 +25,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://huerta-env.r7qjn3cps6.us-west-2.elasticbeanstalk.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -103,7 +103,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'base64:gQWApW0VWtkuABd2kVbceuPGnVhN/x3PGPiB0RTOfRY='),
 
     'cipher' => 'AES-256-CBC',
 
