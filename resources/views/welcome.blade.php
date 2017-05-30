@@ -5,7 +5,7 @@
                 <div class="top-right links">
                     @if (Auth::check())
                         @if (Auth::user()->isProducer())
-                            <a href="{{ route('producer.profile') }}">Perfil</a>
+                            <a href="{{ url('producer/index') }}">Perfil</a>
                         @else
                             <a href="{{ route('home') }}">Home</a>
                         @endif

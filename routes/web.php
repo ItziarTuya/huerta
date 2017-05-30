@@ -19,14 +19,26 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+/* -- Producer -- */
 Route::group(['namespace' => 'Producer', 'prefix' => 'producer'], function () {
 	Route::get('/register', 'RegisterController@showRegistrationForm')->name('producer.register');
 	Route::post('/register', 'RegisterController@register')->name('producer.register');
-	Route::get('/profile', 'ProfileController@index')->name('producer.profile');
+	Route::get('/index', 'ProfileController@index');
+	Route::get('/edit', 'ProfileController@edit');
+
 
     Route::resource('products', 'ProductController', ['names' =>
         ['index' => 'producer.products',
         'create' => 'producer.product.create',
         'store' => 'producer.product.store',]
     ]);
+});
+
+
+
+/* -- Customer -- */
+Route::group(['namespace' => 'Customer', 'prefix' => 'customer'], function () {
+	Route::get('/index', 'ProfileController@index');
+	Route::get('/edit', 'ProfileController@edit');
 });

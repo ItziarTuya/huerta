@@ -5,6 +5,8 @@ namespace huerta\Http\Controllers\Auth;
 use huerta\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Auth; 
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -23,7 +25,6 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        session(['url.intended' => url()->previous()]);
         return view('auth.login');    
     }
 
@@ -43,12 +44,33 @@ class LoginController extends Controller
      * 
      * @return void
      */
-    protected function redirectTo()
+    protected function redirectTo()     
     {
-        if (session('url.intended')) {
-            return session('url.intended'); 
-        }
+        if (Auth::user()->isProducer()) {
+            return 'producer/index'; 
         
-        return 'list';
+        } elseif (Auth::user()->isCustomer()) {
+            return 'customer/index';
+        
+        } else return 'home';
+
+        return '';
+    }
+
+
+    /**
+     * Send the response after the user was authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard()->user())
+                ?: redirect($this->redirectPath());
     }
 }

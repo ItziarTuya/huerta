@@ -1,6 +1,6 @@
 <?php
 
-namespace huerta\Http\Controllers\Producer;
+namespace huerta\Http\Controllers\Customer;
 
 use Illuminate\Http\Request;
 use huerta\Http\Controllers\Controller;
@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('producer');
+        $this->middleware('auth');
     }
 
     /**
@@ -27,7 +27,7 @@ class ProfileController extends Controller
      */
     public function index(Request $request)
     {
-        return view('producer.index', ['user' => $request->user()]);
+        return view('customer.index', ['user' => $request->user()]);
     }
 
     /**
@@ -38,6 +38,6 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        return view('producer.edit', ['user' => Auth::user()]);
+        return view('customer.edit', ['user' => Auth::user()]);
     }
 }

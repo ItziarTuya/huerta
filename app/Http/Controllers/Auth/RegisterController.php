@@ -36,23 +36,26 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        session(['url.intended' => url()->previous()]);
         return view('auth.register');    
     }
 
 
-    /**
-     * Redirect to previous url after login
+     /**
+     * Redirect to previous url after registration
      * 
      * @return void
      */
-    protected function redirectTo()
+    protected function redirectTo()     
     {
-        if (session('url.intended')) {
-            return session('url.intended'); 
-        }
+        if (Auth::user()->isProducer()) {
+            return 'producer/index'; 
+        
+        } elseif (Auth::user()->isCustomer()) {
+            return view('customer.index');
+        
+        } else return view('home');
 
-        return 'home';
+        return view('welcome');
     }
 
     /**

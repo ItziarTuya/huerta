@@ -1,10 +1,11 @@
 @include('layouts.welcome')
+
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+            @if (Route::has('login'))                           {{-- is already logged?--}}
                 <div class="top-right links">
                     @if (Auth::check())
-                        @if (Auth::user()->isProducer())
+                        @if (Auth::user()->isCustomer())        {{-- the user is a customer?--}}
                         @else
                             <a href="{{ route('home') }}">Home</a>
                         @endif
@@ -12,6 +13,8 @@
                         <a href="{{ url('/login') }}">Login</a>
                     @endif
                 </div>
+            @else
+                {{ route('home') }}                             {{-- redirect home --}}
             @endif
 
 
@@ -24,10 +27,9 @@
 
 
                 <div class="links">
-                    <a href="{{ route('producer.product.create') }}">Add products</a>
-                    <a href="{{ url('producer/edit') }}">Update profile</a>
-                    <a href="{{-- route('producer.profile') --}}">Show sales</a>
                     <a href="{{-- route('producer.profile') --}}">Go shopping</a>
+                    <a href="{{ url('customer/edit') }}">Update profile</a>
+                    <a href="{{-- route('producer.profile') --}}">Show shopping cart</a>
                 </div>
 
             </div>
@@ -35,4 +37,3 @@
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
-

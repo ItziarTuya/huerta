@@ -12,7 +12,6 @@ class RegisterController extends RegisterBase
 
 	public function showRegistrationForm()
 	{
-	    session(['url.intended' => url()->previous()]);
 	    return view('/producer.register');
 	}
 
