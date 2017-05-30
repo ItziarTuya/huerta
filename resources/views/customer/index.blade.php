@@ -28,7 +28,7 @@
 
                 <div class="links">
                     <a href="{{-- route('producer.profile') --}}">Go shopping</a>
-                    <a href="{{ url('customer/edit') }}">Update profile</a>
+                    <a href="{{-- url('customer/edit') --}}">Update profile</a>
                     <a href="{{-- route('producer.profile') --}}">Show shopping cart</a>
                 </div>
 
