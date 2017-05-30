@@ -11,8 +11,6 @@
                     You are logged in!
                     You are the master and comander!
                     You are th fucking Admin!
-
-                    <h3>If you are not an Admin, get out here, fucking niger!!!</h3>
                 </div>
             </div>
         </div>
