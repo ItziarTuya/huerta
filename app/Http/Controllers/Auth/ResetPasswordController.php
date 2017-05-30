@@ -35,18 +35,19 @@ class ResetPasswordController extends Controller
 
     /**
      * Redirect to previous url after login
-     * 
+     *
      * @return void
      */
-    protected function redirectTo()         // Modify user navigation.
-    { 
+    protected function redirectTo()
+    {
         if (Auth::user()->isProducer()) {
-            return view('producer.index'); 
-        
-        } elseif (Auth::user()->isCustomer()) {
-            return view('customer.index');
-        
-        } else return view('home');
+            return 'producer/index';
 
+        } elseif (Auth::user()->isCustomer()) {
+            return 'customer/index';
+
+        } else return 'home';
+
+        return '';
     }
 }
