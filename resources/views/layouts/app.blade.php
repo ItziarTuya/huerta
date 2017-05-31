@@ -11,6 +11,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
 
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
@@ -47,8 +48,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
-                            <li><a href="{{ route('register') }}">Register <span class="glyphicon glyphicon-save" aria-hidden="true"></span></a></li>
+                            {{--<li><a href="{{ route('login') }}">Login <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+                            <li><a href="{{ route('register') }}">Register <span class="glyphicon glyphicon-save" aria-hidden="true"></span></a></li>--}}
                         @else
                             <li class="dropdown">
 

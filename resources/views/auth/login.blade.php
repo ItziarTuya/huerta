@@ -5,7 +5,9 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading">
+                    <h3>Login</h3>
+                </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
@@ -59,9 +61,16 @@
                                 </a>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+                <p class="text-center"><strong>New to Orchard?</strong></p>
+                <a a href="{{ route('register') }}" role="button" class="btn btn-default btn-block">Create your account</a>
+            </div>
+        </div>
         </div>
     </div>
 </div>
