@@ -26,6 +26,7 @@ Route::group(['namespace' => 'Producer', 'prefix' => 'producer'], function () {
 	Route::post('/register', 'RegisterController@register')->name('producer.register');
 	Route::get('/index', 'ProfileController@index');
 	Route::get('/edit', 'ProfileController@edit');
+	Route::post('/edit', 'ProfileController@update');
 
 
     Route::resource('products', 'ProductController', ['names' =>

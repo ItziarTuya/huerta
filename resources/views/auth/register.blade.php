@@ -15,7 +15,7 @@
                                 {{ route('register') }}
                             @endslot
 
-                            @include('partial.form_cp_name')
+                            @include('partial.form_cp', ['name' => 'name', 'type' => 'text', 'label' => 'Name'])
                             @include('partial.form_cp_mail')
                             @include('partial.form_cp_pwd')
 

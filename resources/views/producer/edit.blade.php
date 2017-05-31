@@ -12,15 +12,14 @@
                         @component('partial.form_zero')
 
                             @slot('action')
-                                {{-- route('profil') --}}
+                                {{ url('producer/edit') }}
                             @endslot
 
-                            @include('partial.form_cp_name')
-                            @include('partial.form_cp_mail')
-                            @include('partial.form_cp_pwd')
+                            @include('partial.form_cp', ['name' => 'name', 'type' => 'text', 'label' => 'Name', 'value' => $user->name])
+                            @include('partial.form_cp', ['name' => 'email', 'type' => 'email', 'label' => 'E-Mail Address', 'value' => $user->email])
 
                             @slot('submit')
-                               Register
+                               Edit
                             @endslot
 
                         @endcomponent
