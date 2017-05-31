@@ -52,7 +52,7 @@ class ProductController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'description' => 'string',
-            'price' => 'required|double',
+            'price' => 'required|numeric',
             'stock' => 'required|integer',
             'category' => 'string',
         ]);
@@ -66,16 +66,24 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $productData = $request->all();
-        Product::create([
-            'name' => $productData['name'],
-            'description' => 'loquesea',
-            'picture' => 'url',
-            'price' => 20.0,
-            'stock' => 2,
-            'category' => 'verduras',
-            'user_id' => Auth::user()->id,
-        ]);
+        $data = $request->all();
+        $validator = $this->validator($data);
+
+        if ($validator->fails()) {
+            return redirect('producer/product/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        } else {
+            Product::create([
+                'name' => $data['name'],
+                'description' => $data['description'],
+                'picture' => 'url',
+                'price' => $data['price'],
+                'stock' => $data['stock'],
+                'category' => $data['category'],
+                'user_id' => Auth::user()->id,
+            ]);
+        }
 
         return redirect()->route('producer.products');
     }
