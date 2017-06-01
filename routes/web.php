@@ -14,7 +14,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'welcomeController@index')->name('welcome');
+Route::get('/', 'WelcomeController@index')->name('welcome');
 
 
 /* -- Producer -- */

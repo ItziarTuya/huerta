@@ -6,21 +6,21 @@ use Illuminate\Http\Request;
 use huerta\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 
 
-class welcomeController extends Controller
+class WelcomeController extends Controller
 {
-    
+
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         if (Auth::check()){
-           
+
             if (Auth::user()->isProducer()) {
                 return view('producer.index', ['user' => Auth::user()]);
 
@@ -28,7 +28,7 @@ class welcomeController extends Controller
                 return view('customer.index', ['user' => Auth::user()]);
 
             } else return view('home', ['user' => Auth::user()]);
-        
+
         } else return view('welcome');
     }
 
