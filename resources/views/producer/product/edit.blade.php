@@ -10,18 +10,18 @@
                     <div class="panel-body">
 
                 @component('partial.form_zero')
-
+                        @slot('method')
+                            PUT
+                        @endslot
                         @slot('action')
-                            {{ route('producer.product.store') }}
+                            {{ url('producer/products', [$product->id]) }}
                         @endslot
 
                         @include('partial.form_cp', ['name' => 'name', 'type' => 'text', 'label' => 'Name', 'value' => $product->name])
 
-                        @include('partial.form_cp', ['name' => 'description', 'type' => 'text', 'label' => 'Description', , 'value' => $product->description])
+                        @include('partial.form_cp', ['name' => 'description', 'type' => 'text', 'label' => 'Description', 'value' => $product->description])
 
                         @include('partial.form_cp', ['name' => 'category', 'type' => 'text', 'label' => 'Category', 'value' => $product->category])
-
-                        @include('partial.form_cp', ['name' => 'image', 'type' => 'file', 'label' => 'Image', 'value' => $product->image])
 
                         @include('partial.form_cp', ['name' => 'price', 'type' => 'number', 'min' => '1', 'label' => 'Price', 'value' => $product->price])
 

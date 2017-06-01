@@ -134,20 +134,20 @@ class ProductController extends Controller
         $product->category = $productData['category'];
         $product->save();
 
-        return redirect('/producer/product/'.$product->id.'/show');
+        return redirect('/producer/products/');
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \huerta\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request, Product $product)
     {
-        $product = Product::find($id);
         $product->delete();
         $request->session()->flash('message', 'Product delete succsessfully');
-        return redirect('/producer/product/');
+        return redirect('/producer/products/');
     }
 }

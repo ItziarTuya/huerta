@@ -4,19 +4,31 @@
 
 	<h2>Products</h2>
     <table class="table table-products">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th class="text-right">Price</th>
+                <th class="text-right">Stock</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
         <tbody>
             @foreach ($products as $product)
                 <tr>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
-                    <td>{{ $product->price }}</td>
-                    <td>{{ $product->stock }}</td>
+                    <td class="text-right">{{ number_format($product->price, 2, '.', ',') }} €</td>
+                    <td class="text-right">{{ $product->stock }} u</td>
             	    <td>{{ $product->category }}</td>
                     <td>
-                        <a href="{{ url('/producer/products/'.$product->id) }}" class="btn btn-sm btn-info">Edit</a>
-                    </td>
-                    <td>
-                        <a href="{{ route('producer.products', $product->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="{{ url('/producer/products/'.$product->id.'/edit') }}" class="btn btn-sm btn-info">Edit</a>
+                        <form method="POST" action="{{ url('/producer/products', $product->id) }}" class="form-button">
+                            <input type="hidden" name="_method" value="DELETE" >
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-sm btn-danger"> Delete </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

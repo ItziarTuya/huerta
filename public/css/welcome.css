@@ -50,3 +50,8 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
+
+.form-button {
+    display: inline-block;
+    margin-left: 5px;
+}

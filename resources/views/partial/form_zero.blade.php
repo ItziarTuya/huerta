@@ -2,8 +2,12 @@
 <form class="form-horizontal" role="form" method="POST" action="{{ $action }}">
 
     {{ csrf_field() }}
+    @isset($method)
+        <input type="hidden" name="_method" value="{{$method}}" >
+    @endisset
 
     {{ $slot }}
+
 
     <div class="form-group">
         <div class="col-md-6 col-md-offset-4">
