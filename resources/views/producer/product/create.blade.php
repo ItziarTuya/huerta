@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.navigation')
 
 @section('content')
 
@@ -10,11 +10,22 @@
                     <div class="panel-body">
 
 	        	@component('partial.form_zero')
-                    @include('partial.form_product')
 
                         @slot('action')
                             {{ route('producer.product.store') }}
                         @endslot
+
+                        @include('partial.form_cp', ['name' => 'name', 'type' => 'text', 'label' => 'Name'])
+
+                        @include('partial.form_cp', ['name' => 'description', 'type' => 'text', 'label' => 'Description'])
+
+                        @include('partial.form_cp', ['name' => 'category', 'type' => 'text', 'label' => 'Category'])
+
+                        @include('partial.form_cp', ['name' => 'image', 'type' => 'file', 'label' => 'Image'])
+
+                        @include('partial.form_cp', ['name' => 'price', 'type' => 'number', 'min' => '1', 'label' => 'Price'])
+
+                        @include('partial.form_cp', ['name' => 'stock', 'type' => 'number', 'min' => '1', 'label' => 'Stock (quantity)'])
 
                         @slot('submit')
                            Create

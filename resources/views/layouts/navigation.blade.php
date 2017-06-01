@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Orchard') }}</title>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-    <div id="app">
+@section('navigation')
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -28,24 +14,9 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand"
-                    @if (Route::has('login'))                           {{-- is already logged?--}}
-                        @if (Auth::check())
-                            @if (Auth::user()->isProducer())
-                                href="{{ url('producer.index') }}"       {{-- the user is a customer?--}}
-                            @elseif (Auth::user()->isCustomer())
-                                href="{{ url('customer.index') }}"
-                            @else
-                               href="{{ url('/home') }}"
-                            @endif
-                        @endif
-                    @else
-                        {{ route('/') }}                             {{-- redirect welcome --}}
-                    @endif
-                    href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            {{ config('app.name', 'Orchard') }}
+                        </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -58,12 +29,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            {{--<li><a href="{{ route('login') }}">Login <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+                            <li><a href="{{ route('register') }}">Register <span class="glyphicon glyphicon-save" aria-hidden="true"></span></a></li>--}}
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
@@ -71,7 +42,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Logout <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -86,10 +57,4 @@
             </div>
         </nav>
 
-        @yield('content')
-    </div>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-</body>
-</html>
+@endsection

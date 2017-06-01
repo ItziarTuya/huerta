@@ -1,6 +1,7 @@
-@include('layouts.welcome')
+@extends('layouts.app')
 
-    <body>
+@section('content')
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))                           {{-- is already logged?--}}
                 <div class="top-right links">
@@ -34,6 +35,7 @@
 
             </div>
         </div>
-        <script src="{{ asset('js/app.js') }}"></script>
-    </body>
-</html>
+
+@endsection
+
+

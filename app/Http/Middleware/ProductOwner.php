@@ -21,6 +21,6 @@ class ProductOwner
             return $next($request);
         }
 
-        return redirect('home');
+        return redirect('producer/index');
     }
 }

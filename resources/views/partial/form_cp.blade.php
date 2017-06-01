@@ -2,7 +2,7 @@
     <label for="{{ $name }}" class="col-md-4 control-label">{{ $label }}</label>
 
     <div class="col-md-6">
-        <input id="{{ $name }}" type="{{$type}}" class="form-control" name="{{ $name }}" value="{{ old($name, isset($value) ? $value : '') }}" required autofocus>
+        <input id="{{ $name }}" type="{{ $type }}" class="form-control" name="{{ $name }}" min="{{isset($min) ? $min : ''}}" value="{{ old($name, isset($value) ? $value : '') }}" required autofocus>
 
         @if ($errors->has($name))
             <span class="help-block">

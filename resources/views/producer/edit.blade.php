@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.navigation')
 
 @section('content')
 
@@ -29,3 +29,5 @@
             </div>
         </div>
     </div>
+
+@endsection

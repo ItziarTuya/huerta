@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.navigation')
 
 @section('content')
 
@@ -15,8 +15,8 @@
                                 {{ route('producer.register') }}
                             @endslot
 
-                            @include('partial.form_cp_name')
-                            @include('partial.form_cp_mail')
+                            @include('partial.form_cp', ['name' => 'name', 'type' => 'text', 'label' => 'Name'])
+                            @include('partial.form_cp', ['name' => 'email', 'type' => 'email', 'label' => 'E-Mail Address'])
                             @include('partial.form_cp_pwd')
 
                             @slot('submit')
