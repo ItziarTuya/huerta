@@ -45,6 +45,12 @@ html, body {
     text-transform: uppercase;
 }
 
+.aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .m-b-md {
     margin-bottom: 30px;
 }

@@ -11,6 +11,7 @@
                 <th class="text-right">Price</th>
                 <th class="text-right">Stock</th>
                 <th>Category</th>
+                <th>Picture</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,6 +23,7 @@
                     <td class="text-right">{{ number_format($product->price, 2, '.', ',') }} €</td>
                     <td class="text-right">{{ $product->stock }} u</td>
             	    <td>{{ $product->category }}</td>
+                    <td><img src="{{ $product->getPictureUrl() }}" alt="" style="width: 40px; height: 40px;" class="img-thumbnail"></td>
                     <td>
                         <a href="{{ url('/producer/products/'.$product->id.'/edit') }}" class="btn btn-sm btn-info">Edit</a>
                         <form method="POST" action="{{ url('/producer/products', $product->id) }}" class="form-button">

@@ -1,5 +1,6 @@
 
-<form class="form-horizontal" role="form" method="POST" action="{{ $action }}">
+<form class="form-horizontal" role="form" method="POST" action="{{ $action }}"
+    @isset($enctype) enctype="{{ $enctype }}"@endisset>
 
     {{ csrf_field() }}
     @isset($method)

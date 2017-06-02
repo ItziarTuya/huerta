@@ -75,15 +75,15 @@ class ProductController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         } else {
-            Product::create([
+            $product = Product::create([
                 'name' => $data['name'],
                 'description' => $data['description'],
-                'picture' => 'url',
                 'price' => $data['price'],
                 'stock' => $data['stock'],
                 'category' => $data['category'],
                 'user_id' => Auth::user()->id,
             ]);
+            $product->savePicture($request->file('picture'));
         }
 
         return redirect()->route('producer.products');
@@ -134,6 +134,7 @@ class ProductController extends Controller
         $product->stock = $productData['stock'];
         $product->category = $productData['category'];
         $product->save();
+        $product->savePicture($request->file('picture'));
 
         return redirect('/producer/products/');
     }
