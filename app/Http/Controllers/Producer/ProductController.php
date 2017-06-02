@@ -124,7 +124,7 @@ class ProductController extends Controller
         $validator = $this->validator($productData);
 
         if ($validator->fails()) {
-            return redirect('/producer/product/'.$product->id.'/edit')
+            return redirect('/producer/products/'.$product->id.'/edit')
                 ->withErrors($validator);
         }
 
