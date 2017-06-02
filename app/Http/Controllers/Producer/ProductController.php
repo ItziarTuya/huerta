@@ -52,6 +52,7 @@ class ProductController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'description' => 'string',
+            'picture' => 'required|mimes:png,jpg,jpeg,bmp',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
             'category' => 'string',
@@ -70,7 +71,7 @@ class ProductController extends Controller
         $validator = $this->validator($data);
 
         if ($validator->fails()) {
-            return redirect('producer/product/create')
+            return redirect()->route('producer.product.create')
                         ->withErrors($validator)
                         ->withInput();
         } else {

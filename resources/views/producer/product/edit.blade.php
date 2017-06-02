@@ -23,6 +23,11 @@
 
                         @include('partial.form_cp', ['name' => 'category', 'type' => 'text', 'label' => 'Category', 'value' => $product->category])
 
+<<<<<<< Updated upstream
+=======
+                        @include('partial.form_cp', ['name' => 'picture', 'type' => 'file', 'label' => 'Image', 'value' => $product->picture])
+
+>>>>>>> Stashed changes
                         @include('partial.form_cp', ['name' => 'price', 'type' => 'number', 'min' => '1', 'label' => 'Price', 'value' => $product->price])
 
                         @include('partial.form_cp', ['name' => 'stock', 'type' => 'number', 'min' => '1', 'label' => 'Stock (quantity)', 'value' => $product->stock])

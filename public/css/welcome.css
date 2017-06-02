@@ -1,6 +1,4 @@
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:100,600);@charset "UTF-8";
-
 html, body {
     background-color: #fff;
     color: #636b6f;
@@ -51,7 +49,24 @@ html, body {
     margin-bottom: 30px;
 }
 
+.slogan {
+    text-align: center;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 50px;
+}
+
+.init {
+    font-weight: 200;
+}
+
+.navbar-brand > img {
+    display: inline-block;
+    margin-right: 5px;
+}
+
 .form-button {
     display: inline-block;
     margin-left: 5px;
+    font-weight: 100;
 }

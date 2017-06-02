@@ -18,18 +18,17 @@
                 {{ route('home') }}                             {{-- redirect home --}}
             @endif
 
-
             <div class="content">
                 <h5> Welcome {{ $user->name }} </h5>
                 <div class="title m-b-md">
                    Orchard
+                   <hr>
                 </div>
-                <p>Where do we start?</p>
-
 
                 <div class="links">
+                    <p class="init">Where do we start?</p>
                     <a href="{{-- route('producer.profile') --}}">Go shopping</a>
-                    <a href="{{-- url('customer/edit') --}}">Update profile</a>
+                    <a href="{{ url('customer/edit') }}">Update profile</a>
                     <a href="{{-- route('producer.profile') --}}">Show shopping cart</a>
                 </div>
 

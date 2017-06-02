@@ -20,9 +20,10 @@
                 <h5> Welcome {{ $user->name }} </h5>
                 <div class="title m-b-md">
                    Orchard
+                   <hr>
                 </div>
-                <p>Where do we start?</p>
 
+                <p class="init">Where do we start?</p>
 
                 <div class="links">
                     <a href="{{ url('producer/products') }}">Products</a>

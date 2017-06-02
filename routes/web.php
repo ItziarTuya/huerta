@@ -39,4 +39,5 @@ Route::group(['namespace' => 'Producer', 'prefix' => 'producer'], function () {
 Route::group(['namespace' => 'Customer', 'prefix' => 'customer'], function () {
 	Route::get('/index', 'ProfileController@index');
 	Route::get('/edit', 'ProfileController@edit');
+	Route::post('/edit', 'ProfileController@update');
 });

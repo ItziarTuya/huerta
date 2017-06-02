@@ -15,7 +15,6 @@
 
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-    <link rel="icon" type="image/gif" href="{{ asset('animated_favicon1.gif') }}">
 
 </head>
 <body>

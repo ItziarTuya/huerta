@@ -15,6 +15,7 @@
 
                     <!-- Branding Image -->
                         <a class="navbar-brand" href="{{ url('/') }}">
+                            <img src="{{ asset('favicon.ico')}}" alt="Brand-logo">
                             {{ config('app.name', 'Orchard') }}
                         </a>
                 </div>

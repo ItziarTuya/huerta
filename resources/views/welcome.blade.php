@@ -22,11 +22,16 @@
                 <div class="title m-b-md">
                    Orchard
                 </div>
-                <p>Sing up as:</p>
+
+                <div class="slogan">
+                    "Evolve with us the new way <br>
+                    of shopping fresh fruits and vegetables"
+                </div>
 
                 <div class="links">
+                    <p class="init">Sing up as:</p>
                     <a href="{{ route('producer.register') }}">Producer</a>
-                    <a href="{{ route('register') }}">Consumer</a>
+                    <a href="{{ route('register') }}">Customer</a>
                 </div>
 
             </div>
