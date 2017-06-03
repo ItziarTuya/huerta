@@ -41,3 +41,21 @@ Route::group(['namespace' => 'Customer', 'prefix' => 'customer'], function () {
 	Route::get('/edit', 'ProfileController@edit');
 	Route::post('/edit', 'ProfileController@update');
 });
+
+
+
+/* -- Shop -- */
+Route::group(['namespace' => 'Shop', 'prefix' => 'shop'], function () {
+	Route::get('/index', 'ProductController@index');
+	#Route::get('/register', 'RegisterController@showRegistrationForm')->name('producer.register');
+	#Route::post('/register', 'RegisterController@register')->name('producer.register');
+	#Route::get('/edit', 'ProfileController@edit');
+	#Route::post('/edit', 'ProfileController@update');
+
+
+    #Route::resource('products', 'ProductController', ['names' =>
+        #['index' => 'producer.products',
+        #'create' => 'producer.product.create',
+        #'store' => 'producer.product.store',]
+    #]);
+});
