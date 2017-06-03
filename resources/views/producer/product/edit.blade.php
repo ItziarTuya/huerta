@@ -45,7 +45,7 @@
 
             <div class="col-md-2">
 
-                <img src="{{ $product->getPictureUrl() }}" alt="" class="img-thumbnail">
+                <img src="{{ $product->getPictureUrl() }}" alt="" class="img-responsive img-thumbnail">
 
             </div>
         </div>
