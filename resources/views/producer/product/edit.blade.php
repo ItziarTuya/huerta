@@ -26,7 +26,7 @@
 
                                 @include('partial.form_cp', ['name' => 'category', 'type' => 'text', 'label' => 'Category', 'value' => $product->category])
 
-                                @include('partial.form_cp', ['name' => 'picture', 'type' => 'file', 'label' => 'Image', 'value' => $product->picture])
+                                @include('partial.form_cp_optional', ['name' => 'picture', 'type' => 'file', 'label' => 'Image', 'value' => $product->picture])
 
                                 @include('partial.form_cp', ['name' => 'price', 'type' => 'number', 'min' => '1', 'label' => 'Price', 'value' => $product->price])
 

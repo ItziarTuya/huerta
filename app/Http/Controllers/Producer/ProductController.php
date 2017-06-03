@@ -47,16 +47,33 @@ class ProductController extends Controller
      * @param  array Product data
      * @return @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $data, array $rules)
     {
-        return Validator::make($data, [
+        return Validator::make($data, $rules);
+    }
+
+    protected function storeRules()
+    {
+        return [
             'name' => 'required|string|max:255',
             'description' => 'string',
             'picture' => 'required|mimes:png,jpg,jpeg,bmp',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
             'category' => 'string',
-        ]);
+        ];
+    }
+
+    protected function updateRules()
+    {
+        return [
+            'name' => 'required|string|max:255',
+            'description' => 'string',
+            'picture' => 'mimes:png,jpg,jpeg,bmp',
+            'price' => 'required|numeric',
+            'stock' => 'required|integer',
+            'category' => 'string',
+        ];
     }
 
     /**
@@ -68,7 +85,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $validator = $this->validator($data);
+        $validator = $this->validator($data, $this->storeRules());
 
         if ($validator->fails()) {
             return redirect()->route('producer.product.create')
@@ -121,7 +138,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $productData = $request->all();
-        $validator = $this->validator($productData);
+        $validator = $this->validator($productData, $this->updateRules());
 
         if ($validator->fails()) {
             return redirect('/producer/products/'.$product->id.'/edit')
@@ -134,7 +151,10 @@ class ProductController extends Controller
         $product->stock = $productData['stock'];
         $product->category = $productData['category'];
         $product->save();
-        $product->savePicture($request->file('picture'));
+
+        if ($request->hasFile('picture')) {
+            $product->savePicture($request->file('picture'));
+        }
 
         return redirect('/producer/products/');
     }
