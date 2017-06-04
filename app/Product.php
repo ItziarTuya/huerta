@@ -24,6 +24,11 @@ class Product extends Model
         return $this->belongsTo('huerta\User');
     }
 
+    public function products()
+    {
+        return $this->hasMany('huerta\BuyItem');
+    }
+
     /**
      * Get the comments for the blog post.
      */

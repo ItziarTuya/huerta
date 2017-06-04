@@ -1,4 +1,4 @@
-@extends('layouts.navigation')
+@extends('layouts.shop')
 
 @section('content')
 

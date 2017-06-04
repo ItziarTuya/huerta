@@ -19,19 +19,7 @@ class ShopBaseController extends Controller
         $this->middleware('auth');
     }
 
-    protected function getShoppingCart(Request $request)
-    {
-        if ($request->session()->has('shoppingCart')) {
-            return $request->session()->get('shoppingCart');
-        }
-
-        $shoppingCart = $this->getShoppingCartFromDB();
-        $request->session()->put('shoppingCart', $shoppingCart);
-
-        return $shoppingCart;
-    }
-
-    private function getShoppingCartFromDB()
+    protected function getShoppingCart()
     {
         $shoppingCart = ShoppingCart::getCurrentShoppingCart();
         if (!is_null($shoppingCart)) {

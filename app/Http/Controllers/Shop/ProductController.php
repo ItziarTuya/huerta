@@ -20,7 +20,10 @@ class ProductController extends ShopBaseController
     public function index()
     {
         $products = Product::where('user_id', '!=', Auth::user()->id)->paginate(6);
-        return view('shop.index')->with('products', $products);
+        return view('shop.index', [
+            'products' => $products,
+            'shoppingCart' => $this->getShoppingCart(),
+        ]);
     }
 
     /**
@@ -31,7 +34,10 @@ class ProductController extends ShopBaseController
      */
     public function show(Product $product)
     {
-        return view('shop.show')->with('product', $product);
+        return view('shop.show', [
+            'product' => $product,
+            'shoppingCart' => $this->getShoppingCart(),
+        ]);
     }
 
     /**
@@ -50,8 +56,8 @@ class ProductController extends ShopBaseController
                         ->withInput();
         }
 
-        $buyItem = $this->getBuyItem($request, $product);
-        $buyItem->quatity += $data['quantity'];
+        $buyItem = $this->getBuyItem($product);
+        $buyItem->quantity += $data['quantity'];
         $product->stock -= $data['quantity'];
         $buyItem->save();
         $product->save();
@@ -83,9 +89,9 @@ class ProductController extends ShopBaseController
         ];
     }
 
-    protected function getBuyItem(Request $request, Product $product)
+    protected function getBuyItem(Product $product)
     {
-        $shoppingCart = $this->getShoppingCart($request);
+        $shoppingCart = $this->getShoppingCart();
         $buyItem = BuyItem::where([
             ['shopping_cart_id', '=', $shoppingCart->id],
             ['product_id', '=', $product->id],
@@ -98,7 +104,7 @@ class ProductController extends ShopBaseController
         return BuyItem::create([
             'shopping_cart_id' => $shoppingCart->id,
             'product_id' => $product->id,
-            'quatity' => 0,
+            'quantity' => 0,
         ]);
     }
 }

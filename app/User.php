@@ -28,6 +28,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * Get the comments for the blog post.
+     */
+    public function products()
+    {
+        return $this->hasMany('huerta\Product');
+    }
+
+    public function shoppingCarts()
+    {
+        return $this->hasMany('huerta\ShoppingCart');
+    }
+
     public function isCustomer()
     {
         return $this->role == 1;
@@ -46,13 +59,5 @@ class User extends Authenticatable
     public function isProductOwner(Product $product)
     {
         return $this->id == $product->user_id;
-    }
-
-    /**
-     * Get the comments for the blog post.
-     */
-    public function products()
-    {
-        return $this->hasMany('huerta\Product');
     }
 }

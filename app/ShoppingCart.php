@@ -11,6 +11,10 @@ class ShoppingCart extends Model
         'user_id', 'state',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo('huerta\User');
+    }
 
     public function buyItems()
     {
@@ -23,5 +27,21 @@ class ShoppingCart extends Model
             ['state', '=', 1],
             ['user_id', '=', Auth::user()->id],
         ])->first();
+    }
+
+    public function getNumItems(){
+        return $this->buyItems->sum('quantity');
+    }
+
+    public function getTotalPrice()
+    {
+        $totalPrice = 0;
+
+        foreach ($this->buyItems as $buyItem)
+        {
+            $totalPrice += $buyItem->getTotalPrice();
+        }
+
+        return $totalPrice;
     }
 }

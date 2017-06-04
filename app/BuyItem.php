@@ -8,8 +8,18 @@ class BuyItem extends Model
 {
     protected $guarded = [];
 
-    public function shopingCart()
+    public function shoppingCart()
     {
-        return $this->hasOne('huerta\ShopingCart');
+        return $this->belongsTo('huerta\ShoppingCart');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo('huerta\Product');
+    }
+
+    public function getTotalPrice()
+    {
+        return $this->quantity * $this->product->price;
     }
 }
