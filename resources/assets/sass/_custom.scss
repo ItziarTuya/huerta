@@ -1,3 +1,10 @@
 .table.table-products td {
 	vertical-align: middle;
 }
+
+@media (min-width: $screen-sm-min) {
+  // Inline-block all the things for "inline"
+  .form-inline .form-group {
+    margin-bottom: 15px;
+  }
+}

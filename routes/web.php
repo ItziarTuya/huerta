@@ -46,7 +46,9 @@ Route::group(['namespace' => 'Customer', 'prefix' => 'customer'], function () {
 
 /* -- Shop -- */
 Route::group(['namespace' => 'Shop', 'prefix' => 'shop'], function () {
-	Route::get('/index', 'ProductController@index');
+    Route::get('/index', 'ProductController@index');
+    Route::get('/show/{product}', 'ProductController@show');
+	Route::post('/add/{product}', 'ProductController@add');
 	#Route::get('/register', 'RegisterController@showRegistrationForm')->name('producer.register');
 	#Route::post('/register', 'RegisterController@register')->name('producer.register');
 	#Route::get('/edit', 'ProfileController@edit');

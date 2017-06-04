@@ -11,7 +11,7 @@
 
                 <div class="clearfix">
                     <p>{{ $product->price }}</p>
-                    <p><a href="#{{-- $button->add --}}" class="btn btn-primary pull-right" role="button">Add</a></p>
+                    <p><a href="{{ url('shop/show/'.$product->id) }}" class="btn btn-primary pull-right" role="button">Show</a></p>
                 </div>
             </div>
         </div>
