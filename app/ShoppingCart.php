@@ -4,6 +4,7 @@ namespace huerta;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ShoppingCart extends Model
 {
@@ -43,5 +44,17 @@ class ShoppingCart extends Model
         }
 
         return $totalPrice;
+    }
+
+    public function isPending()
+    {
+        return $this->state == 1;
+    }
+
+    public function confirm()
+    {
+        $this->state = 2;
+        $this->confirmed_at = Carbon::now()->toDateTimeString();
+        $this->save();
     }
 }

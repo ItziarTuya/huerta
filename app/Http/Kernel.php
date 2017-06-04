@@ -58,5 +58,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'producer' => \huerta\Http\Middleware\Producer::class,
         'productOwner' => \huerta\Http\Middleware\ProductOwner::class,
+        'shoppingCartOwner' => \huerta\Http\Middleware\ShoppingCartOwner::class,
     ];
 }

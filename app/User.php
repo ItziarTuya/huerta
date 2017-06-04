@@ -3,6 +3,7 @@
 namespace huerta;
 
 use huerta\Product;
+use huerta\ShoppingCart;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -59,5 +60,10 @@ class User extends Authenticatable
     public function isProductOwner(Product $product)
     {
         return $this->id == $product->user_id;
+    }
+
+    public function isShoppingCartOwner(ShoppingCart $shoppingCart)
+    {
+        return $this->id == $shoppingCart->user_id;
     }
 }
