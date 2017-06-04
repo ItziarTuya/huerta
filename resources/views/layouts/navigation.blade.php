@@ -34,7 +34,7 @@
                             <li><a href="{{ route('register') }}">Register <span class="glyphicon glyphicon-save" aria-hidden="true"></span></a></li>--}}
                         @else
                             @yield('shopNav')
-                            <li class="dropdown">
+                            <li class="dropdown links">
 
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span>
                                 </a>

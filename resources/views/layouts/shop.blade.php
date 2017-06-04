@@ -1,10 +1,10 @@
 @extends('layouts.navigation')
 
 @section('shopNav')
-    <li><a href="{{ url('shop/index') }}">SHOP</a></li>
-    <li>
+    <li class="links"><a href="{{ url('shop/index') }}">SHOP</a></li>
+    <li class="links">
         <a href="{{ url('shop/cart') }}">
-            {{ $shoppingCart->getNumItems() }}
+            ({{ $shoppingCart->getNumItems() }})
             <span class="glyphicon glyphicon-shopping-cart"></span>
         </a>
     </li>
