@@ -1,10 +1,10 @@
 <?php
 
-namespace huerta\Http\Controllers\Customer;
+namespace huerta\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use huerta\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;  
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
@@ -21,17 +21,6 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        return view('customer.index', ['user' => $request->user()]);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -39,7 +28,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
-        return view('customer.edit', ['user' => Auth::user()]);
+        return view('user.edit', ['user' => Auth::user()]);
     }
 
 
@@ -50,7 +39,7 @@ class ProfileController extends Controller
         $validator = $this->validator($data);
 
         if ($validator->fails()) {
-            return redirect('customer/edit')
+            return redirect('user/edit')
                         ->withErrors($validator)
                         ->withInput();
         } else {
@@ -59,7 +48,7 @@ class ProfileController extends Controller
             $user->save();
         }
 
-        return redirect('customer/index');
+        return redirect('');
     }
 
     protected function validator(array $data)

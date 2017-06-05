@@ -40,14 +40,6 @@ class ResetPasswordController extends Controller
      */
     protected function redirectTo()
     {
-        if (Auth::user()->isProducer()) {
-            return 'producer/index';
-
-        } elseif (Auth::user()->isCustomer()) {
-            return 'customer/index';
-
-        } else return 'home';
-
         return '';
     }
 }

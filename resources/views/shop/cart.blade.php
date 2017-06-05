@@ -36,9 +36,13 @@
         @if ($shoppingCart->isPending())
             <div>
                 <a href="{{ url('shop/index') }}" class="btn btn-info">Return to Shop</a>
-                <a href="{{ url('/shop/cart/clear', $shoppingCart->id) }}" class="btn btn-warning">Empty cart</a>
 
                 @if ($shoppingCart->getNumItems() > 0)
+                    <form method="POST" action="{{ url('/shop/cart/clear', $shoppingCart->id) }}" class="form-button">
+                        <input type="hidden" name="_method" value="DELETE" >
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-warning"> Empty cart </button>
+                    </form>
                     <form method="POST" action="{{ url('/shop/cart/confirm', $shoppingCart->id) }}" class="form-button">
                         {{ csrf_field() }}
                         <button type="submit" class="btn btn-success"> Confirm </button>

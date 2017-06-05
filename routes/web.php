@@ -24,7 +24,6 @@ Route::get('error/forbidden', function () { return view('error/forbidden'); });
 Route::group(['namespace' => 'Producer', 'prefix' => 'producer'], function () {
 	Route::get('/register', 'RegisterController@showRegistrationForm')->name('producer.register');
 	Route::post('/register', 'RegisterController@register')->name('producer.register');
-	Route::get('/index', 'ProfileController@index');
 	Route::get('/edit', 'ProfileController@edit');
 	Route::post('/edit', 'ProfileController@update');
 
@@ -39,8 +38,7 @@ Route::group(['namespace' => 'Producer', 'prefix' => 'producer'], function () {
 
 
 /* -- Customer -- */
-Route::group(['namespace' => 'Customer', 'prefix' => 'customer'], function () {
-	Route::get('/index', 'ProfileController@index');
+Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
 	Route::get('/edit', 'ProfileController@edit');
 	Route::post('/edit', 'ProfileController@update');
 });
@@ -55,5 +53,5 @@ Route::group(['namespace' => 'Shop', 'prefix' => 'shop'], function () {
 
     Route::get('/cart/{shoppingCart}', 'ShoppingCartController@index');
     Route::post('/cart/confirm/{shoppingCart}', 'ShoppingCartController@confirm');
-    Route::get('/cart/clear/{shoppingCart}', 'ShoppingCartController@clear');
+    Route::delete('/cart/clear/{shoppingCart}', 'ShoppingCartController@clear');
 });

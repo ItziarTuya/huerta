@@ -5,7 +5,7 @@ namespace huerta\Http\Controllers\Auth;
 use huerta\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -25,7 +25,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.login');    
+        return view('auth.login');
     }
 
     /**
@@ -38,22 +38,14 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    
+
     /**
      * Redirect to previous url after login
-     * 
+     *
      * @return void
      */
-    protected function redirectTo()     
+    protected function redirectTo()
     {
-        if (Auth::user()->isProducer()) {
-            return 'producer/index'; 
-        
-        } elseif (Auth::user()->isCustomer()) {
-            return 'customer/index';
-        
-        } else return 'home';
-
         return '';
     }
 

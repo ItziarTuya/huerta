@@ -48,10 +48,10 @@ class RegisterController extends Controller
     protected function redirectTo()
     {
         if (Auth::user()->isProducer()) {
-            return 'producer/index';
+            return '';
 
         } elseif (Auth::user()->isCustomer()) {
-            return 'customer/index';
+            return '';
 
         } else return 'home';
 

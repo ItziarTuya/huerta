@@ -12,7 +12,7 @@
                         @component('partial.form_zero')
 
                             @slot('action')
-                                {{ url('producer/edit') }}
+                                {{ url('user/edit') }}
                             @endslot
 
                             @include('partial.form_cp', ['name' => 'name', 'type' => 'text', 'label' => 'Name', 'value' => $user->name])

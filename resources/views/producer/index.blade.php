@@ -27,7 +27,7 @@
 
                 <div class="links">
                     <a href="{{ url('producer/products') }}">Products</a>
-                    <a href="{{ url('producer/edit') }}">Update profile</a>
+                    <a href="{{ url('user/edit') }}">Update profile</a>
                     <a href="{{-- route('producer.profile') --}}">Show sales</a>
                     <a href="{{ url('shop/index') }}">Go shopping</a>
                     <a href="{{ route('logout') }}"
