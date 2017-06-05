@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 use huerta\Http\Controllers\Controller;
 use huerta\ShoppingCart;
 
+use huerta\Shop;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use huerta\Product;
+use huerta\BuyItem;
+
+
 class ShoppingCartController extends Controller
 {
     public function __construct()
@@ -29,4 +36,18 @@ class ShoppingCartController extends Controller
 
         return redirect('/');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \huerta\Shop  $shop
+     * @return \Illuminate\Http\Response
+     */
+    public function clear(ShoppingCart $shoppingCart)
+    {
+       $shoppingCart->clear();
+
+        return redirect('shop/cart/'.$shoppingCart->id);
+    }
+
 }

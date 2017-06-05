@@ -5,6 +5,8 @@ namespace huerta;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use huerta\Product;
+use huerta\BuyItem;
 
 class ShoppingCart extends Model
 {
@@ -56,5 +58,15 @@ class ShoppingCart extends Model
         $this->state = 2;
         $this->confirmed_at = Carbon::now()->toDateTimeString();
         $this->save();
+    }
+
+    public function clear()
+    {
+        foreach ($this->buyItems as $buyItem) {     //$this->buyItems; Todos los productos del carrito.
+            $product = $buyItem->product;
+            $product->stock += $buyItem->quantity;  
+            $product->save();
+            $buyItem->delete();
+        }
     }
 }

@@ -31,4 +31,6 @@ class ShopBaseController extends Controller
             'state' => 1,
         ]);
     }
+
+    
 }

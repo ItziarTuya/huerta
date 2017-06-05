@@ -13,7 +13,6 @@
                </div>
 
                 <div class="links" style="padding-top: 20px;">
-                    <a href="{{ url()->previous() }}">Back</a>
                     <a href="{{ route('welcome') }}">Home</a>
                 </div>
             </div>

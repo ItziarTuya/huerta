@@ -65,17 +65,7 @@ class ProductController extends ShopBaseController
 
         return redirect('shop/index');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \huerta\Shop  $shop
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Shop $shop)
-    {
-        //
-    }
+    
 
     protected function validator(array $data, array $rules)
     {

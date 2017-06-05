@@ -21,6 +21,6 @@ class Producer
             return $next($request);
         }
 
-        return redirect('error/forbiden');
+        return redirect('error/forbidden');
     }
 }

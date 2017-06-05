@@ -55,4 +55,5 @@ Route::group(['namespace' => 'Shop', 'prefix' => 'shop'], function () {
 
     Route::get('/cart/{shoppingCart}', 'ShoppingCartController@index');
     Route::post('/cart/confirm/{shoppingCart}', 'ShoppingCartController@confirm');
+    Route::get('/cart/clear/{shoppingCart}', 'ShoppingCartController@clear');
 });
