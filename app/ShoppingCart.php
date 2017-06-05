@@ -5,8 +5,6 @@ namespace huerta;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use huerta\Product;
-use huerta\BuyItem;
 
 class ShoppingCart extends Model
 {

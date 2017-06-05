@@ -7,9 +7,10 @@ use huerta\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
+use huerta\Http\Controllers\Shop\ShopBaseController;
 
 
-class WelcomeController extends Controller
+class WelcomeController extends ShopBaseController
 {
 
     /**
@@ -22,10 +23,10 @@ class WelcomeController extends Controller
         if (Auth::check()){
 
             if (Auth::user()->isProducer()) {
-                return view('producer.index', ['user' => Auth::user()]);
+                return view('producer.index', ['user' => Auth::user(),'shoppingCart' => $this->getShoppingCart()]);
 
             } elseif (Auth::user()->isCustomer()) {
-                return view('customer.index', ['user' => Auth::user()]);
+                return view('customer.index', ['user' => Auth::user(),'shoppingCart' => $this->getShoppingCart()]);
 
             } else return view('home', ['user' => Auth::user()]);
 

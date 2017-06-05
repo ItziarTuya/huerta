@@ -29,7 +29,7 @@
                     <p class="init">Where do we start?</p>
                     <a href="{{ url('shop/index') }}">Go shopping</a>
                     <a href="{{ url('customer/edit') }}">Update profile</a>
-                    <a href="{{ url('shop/cart') }}">Show shopping cart</a>
+                    <a href="{{ url('shop/cart/'.$shoppingCart->id) }}">Show shopping cart</a>
                     <a href="" onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
                         Logout <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
