@@ -6,7 +6,7 @@
         <div class="row aligner">
             <div class="col-md-8">
                 <div class="panel panel-collapse">
-                    <div class="panel-heading"><h2>Edit product description</h2></div>
+                    <div class="panel-heading"><h2>Edit product</h2></div>
                     <div class="panel-body">
 
                         @component('partial.form_zero')

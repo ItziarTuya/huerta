@@ -21,6 +21,6 @@ class ShoppingCartOwner
             return $next($request);
         }
 
-        return redirect('shop/index');
+        return redirect('error/forbidden');
     }
 }

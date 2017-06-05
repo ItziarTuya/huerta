@@ -12,7 +12,7 @@
                             <a href="{{ route('home') }}">Home</a>
                         @endif
                     @else
-                        <a href="{{ url('/login') }}">Login</a>
+                        {{--<a href="{{ url('/login') }}">Login</a>--}}
                     @endif
                 </div>
             @endif
@@ -32,6 +32,10 @@
                     <p class="init">Sing up as:</p>
                     <a href="{{ route('producer.register') }}">Producer</a>
                     <a href="{{ route('register') }}">Customer</a>
+                </div>
+
+                <div class="clearfix links" style="padding-top: 20px;">
+                    <a href="{{ url('/login') }}">Login <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a>
                 </div>
 
             </div>

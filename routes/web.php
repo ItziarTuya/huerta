@@ -16,6 +16,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
 
+Route::get('error/forbidden', function () { return view('error/forbidden'); });
+
+
 
 /* -- Producer -- */
 Route::group(['namespace' => 'Producer', 'prefix' => 'producer'], function () {
@@ -52,15 +55,4 @@ Route::group(['namespace' => 'Shop', 'prefix' => 'shop'], function () {
 
     Route::get('/cart/{shoppingCart}', 'ShoppingCartController@index');
     Route::post('/cart/confirm/{shoppingCart}', 'ShoppingCartController@confirm');
-	#Route::get('/register', 'RegisterController@showRegistrationForm')->name('producer.register');
-	#Route::post('/register', 'RegisterController@register')->name('producer.register');
-	#Route::get('/edit', 'ProfileController@edit');
-	#Route::post('/edit', 'ProfileController@update');
-
-
-    #Route::resource('products', 'ProductController', ['names' =>
-        #['index' => 'producer.products',
-        #'create' => 'producer.product.create',
-        #'store' => 'producer.product.store',]
-    #]);
 });

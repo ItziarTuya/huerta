@@ -21,6 +21,6 @@ class ProductOwner
             return $next($request);
         }
 
-        return redirect('producer/index');
+        return redirect('error/forbiden');
     }
 }

@@ -30,6 +30,14 @@
                     <a href="{{ url('producer/edit') }}">Update profile</a>
                     <a href="{{-- route('producer.profile') --}}">Show sales</a>
                     <a href="{{ url('shop/index') }}">Go shopping</a>
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                        Logout <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 </div>
 
             </div>
