@@ -21,7 +21,7 @@
 
                         @include('partial.form_cp', ['name' => 'name', 'type' => 'text', 'label' => 'Name'])
 
-                        @include('partial.form_cp', ['name' => 'description', 'type' => 'text', 'label' => 'Description'])
+                        @include('partial.form_cp_textarea', ['name' => 'description' , 'label' => 'Description'])
 
                         @include('partial.form_cp', ['name' => 'category', 'type' => 'text', 'label' => 'Category'])
 

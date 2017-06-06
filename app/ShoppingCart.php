@@ -30,6 +30,16 @@ class ShoppingCart extends Model
         ])->first();
     }
 
+
+    public static function getShoppingCarts()
+    {
+        return self::where([
+            ['state', '=', 2], //vendido
+            ['user_id', '=', Auth::user()->id],
+        ])->paginate(5);
+    }
+
+
     public function getNumItems(){
         return $this->buyItems->sum('quantity');
     }

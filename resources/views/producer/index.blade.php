@@ -30,6 +30,7 @@
                     <a href="{{ url('user/edit') }}">Update profile</a>
                     <a href="{{-- route('producer.profile') --}}">Show sales</a>
                     <a href="{{ url('shop/index') }}">Go shopping</a>
+                    <a href="{{ url('shop/cart/'.$shoppingCart->id) }}">Show shopping cart</a>
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">

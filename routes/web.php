@@ -55,3 +55,8 @@ Route::group(['namespace' => 'Shop', 'prefix' => 'shop'], function () {
     Route::post('/cart/confirm/{shoppingCart}', 'ShoppingCartController@confirm');
     Route::delete('/cart/clear/{shoppingCart}', 'ShoppingCartController@clear');
 });
+
+
+
+/* -- Customer -- */
+Route::get('customer/orders', 'Customer\ShoppingCartController@orders')->name('orders');

@@ -30,7 +30,7 @@
                     <a href="{{ url('shop/index') }}">Go shopping</a>
                     <a href="{{ url('user/edit') }}">Update profile</a>
                     <a href="{{ url('shop/cart/'.$shoppingCart->id) }}">Show shopping cart</a>
-                    <a href="{{-- url('shop/cart/'.$shoppingCart->id) --}}">Show order history</a>
+                    <a href="{{ url('customer/orders/') }}">Show order history</a>
                     <a href="" onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
                         Logout <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>

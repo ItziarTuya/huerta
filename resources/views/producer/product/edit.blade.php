@@ -22,7 +22,7 @@
 
                                 @include('partial.form_cp', ['name' => 'name', 'type' => 'text', 'label' => 'Name', 'value' => $product->name])
 
-                                @include('partial.form_cp', ['name' => 'description', 'type' => 'text', 'label' => 'Description', 'value' => $product->description])
+                                @include('partial.form_cp_textarea', ['name' => 'description', 'label' => 'Description', 'value' => $product->description])
 
                                 @include('partial.form_cp', ['name' => 'category', 'type' => 'text', 'label' => 'Category', 'value' => $product->category])
 
