@@ -45,7 +45,7 @@ class ShoppingCartController extends Controller
      */
     public function clear(ShoppingCart $shoppingCart)
     {
-       $shoppingCart->clear();
+        $shoppingCart->clear();
 
         return redirect('shop/cart/'.$shoppingCart->id);
     }

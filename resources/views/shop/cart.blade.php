@@ -14,23 +14,30 @@
                     <th>Name</th>
                     <th class="text-right">Price By Unit</th>
                     <th class="text-right">Units</th>
-                    <th class="text-right">TotalPrice</th>
+                    <th class="text-right">Price</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($shoppingCart->buyItems as $buyItem)
+                @forelse ($shoppingCart->buyItems as $buyItem)
                     <tr>
                         <td>
                             <a href="{{ url('shop/show/'.$buyItem->product->id) }}">{{ $buyItem->product->name }}</a>
                         </td>
-                        <td class="text-right">{{ $buyItem->product->price }} €</td>
+                        <td class="text-right">{{ $buyItem->product->getFormatedPrice() }}</td>
                         <td class="text-right">{{ $buyItem->quantity }} u</td>
-                        <td class="text-right">{{ $buyItem->getTotalPrice() }} €</td>
+                        <td class="text-right">{{ $buyItem->getFormatedTotalPrice() }}</td>
                     </tr>
-                @endforeach
+
+                @empty
+                    <div class="alert alert-warning">
+                        <strong>Your shopping cart is empty</strong>
+                    </div>
+                @endforelse
             </tbody>
             <tfoot>
-                <td colspan="4"  class="text-right">{{ $shoppingCart->getTotalPrice() }} €</td>
+                <td colspan="4" class="text-right">
+                    <strong> Total Price: {{ $shoppingCart->getFormatedTotalPrice() }} </strong>
+                </td>
             </tfoot>
         </table>
         @if ($shoppingCart->isPending())

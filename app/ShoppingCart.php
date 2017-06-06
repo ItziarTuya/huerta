@@ -34,17 +34,25 @@ class ShoppingCart extends Model
         return $this->buyItems->sum('quantity');
     }
 
+
     public function getTotalPrice()
     {
         $totalPrice = 0;
 
         foreach ($this->buyItems as $buyItem)
         {
-            $totalPrice += $buyItem->getTotalPrice();
+            $totalPrice += $buyItem->getTotalPrice();   //Sumatorio del precio de los productos del carrito.
         }
 
         return $totalPrice;
     }
+
+
+    public function getFormatedTotalPrice() 
+    {
+        return number_format($this->getTotalPrice(), 2, '.', ',').' €';
+    }
+
 
     public function isPending()
     {
@@ -60,7 +68,7 @@ class ShoppingCart extends Model
 
     public function clear()
     {
-        foreach ($this->buyItems as $buyItem) {     //$this->buyItems; Todos los productos del carrito.
+        foreach ($this->buyItems as $buyItem) {     //$this->buyItems; Productos del carrito.
             $product = $buyItem->product;
             $product->stock += $buyItem->quantity;  
             $product->save();

@@ -45,4 +45,9 @@ class Product extends Model
     {
         return Storage::disk('s3')->url('products/'.$this->user_id.'/'.$this->picture);
     }
+
+    public function getFormatedPrice() 
+    {
+        return number_format($this->price, 2, '.', ',').' €';
+    }
 }

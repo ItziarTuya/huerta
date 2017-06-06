@@ -7,7 +7,7 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Description</th>
+
                 <th class="text-right">Price</th>
                 <th class="text-right">Stock</th>
                 <th>Category</th>
@@ -19,8 +19,7 @@
             @foreach ($products as $product)
                 <tr>
                     <td>{{ $product->name }}</td>
-                    <td>{{ $product->description }}</td>
-                    <td class="text-right">{{ number_format($product->price, 2, '.', ',') }} €</td>
+                    <td class="text-right">{{ $product->getFormatedPrice() }}</td>
                     <td class="text-right">{{ $product->stock }} u</td>
             	    <td>{{ $product->category }}</td>
                     <td><img src="{{ $product->getPictureUrl() }}" alt="" style="width: 40px; height: 40px;" class="img-thumbnail"></td>

@@ -22,4 +22,9 @@ class BuyItem extends Model
     {
         return $this->quantity * $this->product->price;
     }
+
+    public function getFormatedTotalPrice() 
+    {
+        return number_format($this->getTotalPrice(), 2, '.', ',').' €';
+    }
 }

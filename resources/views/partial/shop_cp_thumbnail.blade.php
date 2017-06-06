@@ -7,10 +7,9 @@
 
                 <h3>{{ $product->name }}</h3>
                 <h5>{{ $product->category }}</h5>
-                <p> {{ $product->description }}</p>
 
                 <div class="clearfix">
-                    <p>{{ $product->price }}</p>
+                    <p>{{ $product->getFormatedPrice() }}</p>
                     <p><a href="{{ url('shop/show/'.$product->id) }}" class="btn btn-primary pull-right" role="button">Show</a></p>
                 </div>
             </div>
