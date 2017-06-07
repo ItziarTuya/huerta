@@ -10,6 +10,6 @@ class ProductController extends AdminBaseController
 {
     public function index()
     {
-        return view('producer.product.index', ['products' => Product::paginate(5)]);
+        return view('producer.product.index', ['products' => Product::withTrashed()->paginate(5)]);
     }
 }

@@ -19,9 +19,15 @@
             </thead>
             <tbody>
                 @forelse ($shoppingCarts as $shoppingCart)
-                    <tr>
+                    <tr @if (Auth::user()->isAdmin() && $shoppingCart->isConfirmed()) class="success" @endif>
                         <td class="text-left">#orchard_{{ $shoppingCart->id }}</td>
-                        <td class="text-center">{{ $shoppingCart->confirmed_at }}</td>
+
+                        @if ($shoppingCart->isPending())
+                            <td class="text-center">Pending</td>
+                        @else
+                            <td class="text-center">{{ $shoppingCart->confirmed_at }}</td>
+                        @endif
+
                         <td class="text-center">
                             <a href="{{ url('shop/cart/'.$shoppingCart->id) }}">show order details</a>
                         </td>

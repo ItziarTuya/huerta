@@ -21,7 +21,7 @@ class Product extends Model
      */
     public function user()
     {
-        return $this->belongsTo('huerta\User');
+        return $this->belongsTo('huerta\User')->withTrashed();
     }
 
     public function products()

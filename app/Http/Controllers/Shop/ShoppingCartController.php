@@ -35,20 +35,32 @@ class ShoppingCartController extends Controller
     {
         $shoppingCart->confirm();
 
-        return redirect('/');
+        return redirect('shop/index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \huerta\Shop  $shop
+     * @param  \huerta\ShoppingCart  $shoppingCart
      * @return \Illuminate\Http\Response
      */
     public function clear(ShoppingCart $shoppingCart)
     {
         $shoppingCart->clear();
 
-        return redirect('shop/cart/'.$shoppingCart->id);
+        return back();
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \huerta\ShoppingCart  $shoppingCart
+     * @return \Illuminate\Http\Response
+     */
+    public function subtract(ShoppingCart $shoppingCart, BuyItem $buyItem)
+    {
+        $shoppingCart->subtract($buyItem);
+
+        return back();
+    }
 }

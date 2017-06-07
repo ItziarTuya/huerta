@@ -69,7 +69,7 @@ class ProductController extends ShopBaseController
         $shoppingCart->add($product, $data['quantity']);
         $request->session()->flash('message', 'Product added to shopping cart');
 
-        return redirect('shop/index');
+        return redirect('shop/cart/'.$shoppingCart->id);
     }
 
 

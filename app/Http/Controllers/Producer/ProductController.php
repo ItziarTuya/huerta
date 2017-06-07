@@ -181,7 +181,7 @@ class ProductController extends Controller
     {
         $product->delete();
         $request->session()->flash('message', 'Product delete succsessfully');
-        return redirect('/producer/products/');
+        return back();
     }
 
     /**

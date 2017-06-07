@@ -16,7 +16,7 @@ class ShoppingCart extends Model
 
     public function user()
     {
-        return $this->belongsTo('huerta\User');
+        return $this->belongsTo('huerta\User')->withTrashed();
     }
 
     public function buyItems()
@@ -60,7 +60,7 @@ class ShoppingCart extends Model
     }
 
 
-    public function getFormatedTotalPrice() 
+    public function getFormatedTotalPrice()
     {
         return number_format($this->getTotalPrice(), 2, '.', ',').' €';
     }
@@ -69,6 +69,11 @@ class ShoppingCart extends Model
     public function isPending()
     {
         return $this->state == 1;
+    }
+
+    public function isConfirmed()
+    {
+        return $this->state == 2;
     }
 
     public function confirm()
@@ -85,6 +90,14 @@ class ShoppingCart extends Model
         $product->stock -= $quantity;
         $buyItem->save();
         $product->save();
+    }
+
+    public function subtract(BuyItem $buyItem)
+    {
+        $product = $buyItem->product;
+        $product->stock += $buyItem->quantity;
+        $product->save();
+        $buyItem->delete();
     }
 
     protected function getBuyItem(Product $product)
@@ -109,10 +122,7 @@ class ShoppingCart extends Model
     public function clear()
     {
         foreach ($this->buyItems as $buyItem) {     //$this->buyItems; Productos del carrito.
-            $product = $buyItem->product;
-            $product->stock += $buyItem->quantity;
-            $product->save();
-            $buyItem->delete();
+            $this->subtract($buyItem);
         }
     }
 }

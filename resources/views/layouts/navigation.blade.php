@@ -34,6 +34,8 @@
                                 @include('partial.navigation_producer')
                             @elseif(Auth::user()->isCustomer())
                                 @include('partial.navigation_customer')
+                            @elseif(Auth::user()->isAdmin())
+                                @include('partial.navigation_admin')
                             @endif
                             @yield('shopNav')
                             <li class="dropdown links">

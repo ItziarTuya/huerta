@@ -15,7 +15,7 @@ class BuyItem extends Model
 
     public function product()
     {
-        return $this->belongsTo('huerta\Product');
+        return $this->belongsTo('huerta\Product')->withTrashed();
     }
 
     public function getTotalPrice()
@@ -23,7 +23,7 @@ class BuyItem extends Model
         return $this->quantity * $this->buy_price;
     }
 
-    public function getFormatedTotalPrice() 
+    public function getFormatedTotalPrice()
     {
         return number_format($this->getTotalPrice(), 2, '.', ',').' €';
     }

@@ -15,6 +15,7 @@
                     <th class="text-right">Price By Unit</th>
                     <th class="text-right">Units</th>
                     <th class="text-right">Price</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +27,13 @@
                         <td class="text-right">{{ $buyItem->product->getFormatedPrice() }}</td>
                         <td class="text-right">{{ $buyItem->quantity }} u</td>
                         <td class="text-right">{{ $buyItem->getFormatedTotalPrice() }}</td>
+                        <td>
+                            <form method="POST" action="{{ url('shop/cart/'.$shoppingCart->id.'/item/'.$buyItem->id) }}" class="form-button">
+                                <input type="hidden" name="_method" value="DELETE" >
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-sm btn-danger"> Delete </button>
+                            </form>
+                        </td>
                     </tr>
 
                 @empty
@@ -38,6 +46,7 @@
                 <td colspan="4" class="text-right">
                     <strong> Total Price: {{ $shoppingCart->getFormatedTotalPrice() }} </strong>
                 </td>
+                <td></td>
             </tfoot>
         </table>
         @if ($shoppingCart->isPending())
