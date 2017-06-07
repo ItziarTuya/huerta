@@ -28,11 +28,13 @@
                         <td class="text-right">{{ $buyItem->quantity }} u</td>
                         <td class="text-right">{{ $buyItem->getFormatedTotalPrice() }}</td>
                         <td>
-                            <form method="POST" action="{{ url('shop/cart/'.$shoppingCart->id.'/item/'.$buyItem->id) }}" class="form-button">
-                                <input type="hidden" name="_method" value="DELETE" >
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-sm btn-danger"> Delete </button>
-                            </form>
+                            @if ($shoppingCart->isPending())
+                                <form method="POST" action="{{ url('shop/cart/'.$shoppingCart->id.'/item/'.$buyItem->id) }}" class="form-button">
+                                    <input type="hidden" name="_method" value="DELETE" >
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-sm btn-danger"> Delete </button>
+                                </form>
+                            @endif
                         </td>
                     </tr>
 
