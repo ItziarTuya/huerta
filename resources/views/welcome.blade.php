@@ -10,7 +10,7 @@
 
                 <div class="slogan">
                     "Evolve with us the new way <br>
-                    of shopping fresh fruits and vegetables"
+                    of shopping bio-fresh fruits and vegetables"
                 </div>
 
                 <div class="links">

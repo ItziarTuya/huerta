@@ -35,7 +35,7 @@ class ShoppingCartController extends Controller
     {
         $shoppingCart->confirm();
 
-        return redirect('shop/index');
+        return redirect('shop/checkout');
     }
 
     /**

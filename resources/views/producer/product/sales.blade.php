@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($products as $product)
+            @forelse ($products as $product)
                 <tr>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->confirmed_at }}</td>
@@ -22,7 +22,13 @@
                     <td class="text-right">{{ $product->quantity }}</td>
                     <td class="text-right">{{ number_format($product->buy_price * $product->quantity, 2, '.', ',') }} €</td>
                 </tr>
-            @endforeach
+
+            @empty
+                <div class="alert alert-warning">
+                    <strong>There no sales to show at the moment.</strong>
+                </div>
+
+            @endforelse
         </tbody>
     </table>
     {{ $products->links() }}

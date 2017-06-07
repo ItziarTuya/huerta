@@ -63,7 +63,7 @@ Route::group(['namespace' => 'Shop', 'prefix' => 'shop'], function () {
     Route::delete('/cart/clear/{shoppingCart}', 'ShoppingCartController@clear');
     Route::delete('/cart/{shoppingCart}/item/{buyItem}', 'ShoppingCartController@subtract');
 });
-
+Route::get('shop/checkout', function () { return view('shop/checkout'); });
 
 
 /* -- Customer -- */
