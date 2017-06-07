@@ -23,11 +23,11 @@
 
                         @include('partial.form_cp_textarea', ['name' => 'description' , 'label' => 'Description'])
 
-                        @include('partial.form_cp', ['name' => 'category', 'type' => 'text', 'label' => 'Category'])
+                        @include('partial.form_cp_select', ['name' => 'category', 'type' => 'text', 'label' => 'Category', 'options' => ['Verduras', 'Frutas', 'Legumbres']])
 
                         @include('partial.form_cp', ['name' => 'picture', 'type' => 'file', 'label' => 'Picture'])
 
-                        @include('partial.form_cp', ['name' => 'price', 'type' => 'number', 'min' => '1', 'label' => 'Price'])
+                        @include('partial.form_cp', ['name' => 'price', 'type' => 'number', 'min' => '0', 'label' => 'Price'])
 
                         @include('partial.form_cp', ['name' => 'stock', 'type' => 'number', 'min' => '1', 'label' => 'Stock (quantity)'])
 

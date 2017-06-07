@@ -36,6 +36,23 @@ class ProductController extends ShopBaseController
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function category(String $category)
+    {
+        $products = Product::where([
+            ['user_id', '!=', Auth::user()->id],
+            ['category', '=', $category],
+        ])->paginate(6);
+        return view('shop.index', [
+            'products' => $products,
+            'shoppingCart' => $this->getShoppingCart(),
+        ]);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \huerta\Shop  $shop

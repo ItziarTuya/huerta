@@ -11,7 +11,10 @@ class UserController extends AdminBaseController
 {
     public function index()
     {
-        return view('admin.users', ['users' => User::withTrashed()->paginate(5)]);
+        return view('admin.users', [
+            'users' => User::where('role', '!=', 3)->withTrashed()->paginate(5),
+            'roleNames' => [1 => 'customer', 2 => 'producer']
+        ]);
     }
 
     /**

@@ -24,13 +24,13 @@
 
                                 @include('partial.form_cp_textarea', ['name' => 'description', 'label' => 'Description', 'value' => $product->description])
 
-                                @include('partial.form_cp', ['name' => 'category', 'type' => 'text', 'label' => 'Category', 'value' => $product->category])
+                                @include('partial.form_cp_select', ['name' => 'category', 'type' => 'text', 'label' => 'Category', 'value' => $product->category, 'options' => ['Verduras', 'Frutas', 'Legumbres']])
 
                                 @include('partial.form_cp_optional', ['name' => 'picture', 'type' => 'file', 'label' => 'Image', 'value' => $product->picture])
 
-                                @include('partial.form_cp', ['name' => 'price', 'type' => 'number', 'min' => '1', 'label' => 'Price', 'value' => $product->price])
+                                @include('partial.form_cp', ['name' => 'price', 'type' => 'number', 'min' => '0', 'label' => 'Price', 'value' => $product->price])
 
-                                @include('partial.form_cp', ['name' => 'stock', 'type' => 'number', 'min' => '1', 'label' => 'Stock (quantity)', 'value' => $product->stock])
+                                @include('partial.form_cp', ['name' => 'stock', 'type' => 'number', 'min' => '0', 'label' => 'Stock (quantity)', 'value' => $product->stock])
 
                                 @slot('submit')
                                    Update

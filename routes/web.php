@@ -53,6 +53,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 Route::group(['namespace' => 'Shop', 'prefix' => 'shop'], function () {
     /* -- Products -- */
     Route::get('/index', 'ProductController@index');
+    Route::get('/category/{category}', 'ProductController@category');
     Route::get('/show/{product}', 'ProductController@show');
     Route::post('/add/{product}', 'ProductController@add');
 

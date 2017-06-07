@@ -7,7 +7,8 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>email</th>
+                <th>E-mail</th>
+                <th>Role</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
                 <tr @if ($user->trashed()) class="danger" @endif>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
+                    <td>{{ $roleNames[$user->role] }}</td>
                     <td>
                         @if (!$user->trashed())
                             <a href="{{ url('/admin/users/'.$user->id.'/edit') }}" class="btn btn-sm btn-info">Edit</a>

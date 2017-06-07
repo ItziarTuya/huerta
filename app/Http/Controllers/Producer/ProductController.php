@@ -114,6 +114,10 @@ class ProductController extends Controller
             $product->savePicture($request->file('picture'));
         }
 
+        if (Auth::user()->isAdmin()) {
+            return redirect('admin/products');
+        }
+
         return redirect()->route('producer.products');
     }
 
@@ -165,6 +169,10 @@ class ProductController extends Controller
 
         if ($request->hasFile('picture')) {
             $product->savePicture($request->file('picture'));
+        }
+
+        if (Auth::user()->isAdmin()) {
+            return redirect('admin/products');
         }
 
         return redirect('/producer/products/');
