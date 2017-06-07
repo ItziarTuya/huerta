@@ -27,8 +27,9 @@ class WelcomeController extends ShopBaseController
 
             } elseif (Auth::user()->isCustomer()) {
                 return view('customer.index', ['user' => Auth::user(),'shoppingCart' => $this->getShoppingCart()]);
+            }
 
-            } else return view('home', ['user' => Auth::user()]);
+            return view('welcome');
 
         } else return view('welcome');
     }

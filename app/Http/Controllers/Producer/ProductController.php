@@ -17,8 +17,9 @@ class ProductController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
         $this->middleware('producer');
-        $this->middleware('productOwner', ['except' => ['index', 'create', 'store']]);
+        $this->middleware('productOwner', ['except' => ['index', 'create', 'store', 'sales']]);
     }
 
     /**
@@ -28,7 +29,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('producer.product.index', ['products' => Auth::user()->products]);
+        return view('producer.product.index', ['products' => Product::getProductsByUser(Auth::user())]);
     }
 
     /**
@@ -52,6 +53,11 @@ class ProductController extends Controller
         return Validator::make($data, $rules);
     }
 
+    /**
+     * Rules to create a product
+     *
+     * @return array
+     */
     protected function storeRules()
     {
         return [
@@ -64,6 +70,11 @@ class ProductController extends Controller
         ];
     }
 
+    /**
+     * Rules to update a product
+     *
+     * @return array
+     */
     protected function updateRules()
     {
         return [
@@ -171,5 +182,15 @@ class ProductController extends Controller
         $product->delete();
         $request->session()->flash('message', 'Product delete succsessfully');
         return redirect('/producer/products/');
+    }
+
+    /**
+     * Display a listing of sold products.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected function sales()
+    {
+        return view('producer.product.sales', ['products' => Product::getSoldProducts(Auth::user())]);
     }
 }

@@ -29,6 +29,11 @@ class Product extends Model
         return $this->hasMany('huerta\BuyItem');
     }
 
+    public static function getProductsByUser(User $user)
+    {
+        return self::where('user_id', '=', $user->id)->paginate(10);
+    }
+
     /**
      * Get the comments for the blog post.
      */
@@ -46,8 +51,19 @@ class Product extends Model
         return Storage::disk('s3')->url('products/'.$this->user_id.'/'.$this->picture);
     }
 
-    public function getFormatedPrice() 
+    public function getFormatedPrice()
     {
         return number_format($this->price, 2, '.', ',').' €';
+    }
+
+    public static function getSoldProducts(User $user)
+    {
+        return self::join('buy_items', 'products.id', '=', 'buy_items.product_id')
+        ->join('shopping_carts', 'shopping_carts.id', '=', 'buy_items.shopping_cart_id')
+        ->select('products.*', 'shopping_carts.confirmed_at', 'buy_items.quantity', 'buy_items.buy_price')
+        ->where([
+            ['shopping_carts.state', '=', 2],
+            ['products.user_id', '=', $user->id],
+        ])->orderBy('shopping_carts.confirmed_at', 'desc')->paginate(10);
     }
 }

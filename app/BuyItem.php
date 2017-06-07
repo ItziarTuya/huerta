@@ -20,7 +20,7 @@ class BuyItem extends Model
 
     public function getTotalPrice()
     {
-        return $this->quantity * $this->product->price;
+        return $this->quantity * $this->buy_price;
     }
 
     public function getFormatedTotalPrice() 

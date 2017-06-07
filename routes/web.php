@@ -12,22 +12,20 @@
 */
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+/* -- General -- */
 Route::get('/', 'WelcomeController@index')->name('welcome');
-
 Route::get('error/forbidden', function () { return view('error/forbidden'); });
-
-
 
 /* -- Producer -- */
 Route::group(['namespace' => 'Producer', 'prefix' => 'producer'], function () {
+    /* -- Profile -- */
 	Route::get('/register', 'RegisterController@showRegistrationForm')->name('producer.register');
 	Route::post('/register', 'RegisterController@register')->name('producer.register');
 	Route::get('/edit', 'ProfileController@edit');
-	Route::post('/edit', 'ProfileController@update');
+    Route::post('/edit', 'ProfileController@update');
 
-
+    /* -- Product -- */
+	Route::get('/sales', 'ProductController@sales');
     Route::resource('products', 'ProductController', ['names' =>
         ['index' => 'producer.products',
         'create' => 'producer.product.create',
@@ -35,22 +33,26 @@ Route::group(['namespace' => 'Producer', 'prefix' => 'producer'], function () {
     ]);
 });
 
-
-
-/* -- Customer -- */
+/* -- User -- */
 Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
 	Route::get('/edit', 'ProfileController@edit');
 	Route::post('/edit', 'ProfileController@update');
 });
 
-
+/* -- Admin -- */
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('/products', 'ProductController@index');
+    Route::get('/users', 'UserController@index');
+});
 
 /* -- Shop -- */
 Route::group(['namespace' => 'Shop', 'prefix' => 'shop'], function () {
+    /* -- Products -- */
     Route::get('/index', 'ProductController@index');
     Route::get('/show/{product}', 'ProductController@show');
     Route::post('/add/{product}', 'ProductController@add');
 
+    /* -- Products -- */
     Route::get('/cart/{shoppingCart}', 'ShoppingCartController@index');
     Route::post('/cart/confirm/{shoppingCart}', 'ShoppingCartController@confirm');
     Route::delete('/cart/clear/{shoppingCart}', 'ShoppingCartController@clear');

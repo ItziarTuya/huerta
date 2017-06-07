@@ -5,6 +5,8 @@ namespace huerta;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use huerta\Product;
+use huerta\BuyItem;
 
 class ShoppingCart extends Model
 {
@@ -76,11 +78,39 @@ class ShoppingCart extends Model
         $this->save();
     }
 
+    public function add(Product $product, $quantity)
+    {
+        $buyItem = $this->getBuyItem($product);
+        $buyItem->quantity += $quantity;
+        $product->stock -= $quantity;
+        $buyItem->save();
+        $product->save();
+    }
+
+    protected function getBuyItem(Product $product)
+    {
+        $buyItem = BuyItem::where([
+            ['shopping_cart_id', '=', $this->id],
+            ['product_id', '=', $product->id],
+        ])->first();
+
+        if (!is_null($buyItem)) {
+            return $buyItem;
+        }
+
+        return BuyItem::create([
+            'shopping_cart_id' => $this->id,
+            'product_id' => $product->id,
+            'buy_price' => $product->price,
+            'quantity' => 0,
+        ]);
+    }
+
     public function clear()
     {
         foreach ($this->buyItems as $buyItem) {     //$this->buyItems; Productos del carrito.
             $product = $buyItem->product;
-            $product->stock += $buyItem->quantity;  
+            $product->stock += $buyItem->quantity;
             $product->save();
             $buyItem->delete();
         }

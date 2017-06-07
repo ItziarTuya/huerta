@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use huerta\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use huerta\Product;
 
 class ProfileController extends Controller
 {
@@ -17,6 +18,7 @@ class ProfileController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
         $this->middleware('producer');
     }
 

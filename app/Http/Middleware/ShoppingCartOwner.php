@@ -16,7 +16,7 @@ class ShoppingCartOwner
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() && Auth::user()->isShoppingCartOwner($request->route()->parameter('shoppingCart')) )
+        if ( Auth::check() && (Auth::user()->isShoppingCartOwner($request->route()->parameter('shoppingCart')) || Auth::user()->isAdmin()) )
         {
             return $next($request);
         }

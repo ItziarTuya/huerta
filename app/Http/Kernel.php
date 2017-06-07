@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'producer' => \huerta\Http\Middleware\Producer::class,
         'productOwner' => \huerta\Http\Middleware\ProductOwner::class,
         'shoppingCartOwner' => \huerta\Http\Middleware\ShoppingCartOwner::class,
+        'admin' => \huerta\Http\Middleware\Admin::class,
     ];
 }

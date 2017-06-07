@@ -16,7 +16,7 @@ class ProductOwner
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() && Auth::user()->isProductOwner($request->route()->parameter('product')) )
+        if ( Auth::check() && (Auth::user()->isProductOwner($request->route()->parameter('product')) || Auth::user()->isAdmin()) )
         {
             return $next($request);
         }

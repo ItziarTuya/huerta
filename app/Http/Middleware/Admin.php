@@ -5,7 +5,7 @@ namespace huerta\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Producer
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class Producer
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() && (Auth::user()->isProducer() || Auth::user()->isAdmin()) )
+        if ( Auth::check() && Auth::user()->isAdmin() )
         {
             return $next($request);
         }

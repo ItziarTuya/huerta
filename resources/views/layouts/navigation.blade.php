@@ -29,10 +29,12 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            {{--<li><a href="{{ route('login') }}">Login <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
-                            <li><a href="{{ route('register') }}">Register <span class="glyphicon glyphicon-save" aria-hidden="true"></span></a></li>--}}
-                        @else
+                        @if (Auth::check())
+                            @if (Auth::user()->isProducer())
+                                @include('partial.navigation_producer')
+                            @elseif(Auth::user()->isCustomer())
+                                @include('partial.navigation_customer')
+                            @endif
                             @yield('shopNav')
                             <li class="dropdown links">
 
@@ -40,6 +42,11 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ url('user/edit') }}">
+                                            Update <span class="glyphicon glyphicon-edit" aria-hidden="true">
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

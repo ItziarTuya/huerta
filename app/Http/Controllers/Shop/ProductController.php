@@ -8,7 +8,6 @@ use huerta\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use huerta\Product;
-use huerta\BuyItem;
 
 class ProductController extends ShopBaseController
 {
@@ -21,7 +20,7 @@ class ProductController extends ShopBaseController
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -62,20 +61,17 @@ class ProductController extends ShopBaseController
         $validator = $this->validator($data, $this->addRules());
         if ($validator->fails() || $data['quantity'] > $product->stock) {
             return redirect('shop/show/'.$product->id)
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
-        $buyItem = $this->getBuyItem($product);
-        $buyItem->quantity += $data['quantity'];
-        $product->stock -= $data['quantity'];
-        $buyItem->save();
-        $product->save();
+        $shoppingCart = $this->getShoppingCart();
+        $shoppingCart->add($product, $data['quantity']);
         $request->session()->flash('message', 'Product added to shopping cart');
 
         return redirect('shop/index');
     }
-    
+
 
     protected function validator(array $data, array $rules)
     {
@@ -87,24 +83,5 @@ class ProductController extends ShopBaseController
         return [
             'quantity' => 'required|integer',
         ];
-    }
-
-    protected function getBuyItem(Product $product)
-    {
-        $shoppingCart = $this->getShoppingCart();
-        $buyItem = BuyItem::where([
-            ['shopping_cart_id', '=', $shoppingCart->id],
-            ['product_id', '=', $product->id],
-        ])->first();
-
-        if (!is_null($buyItem)) {
-            return $buyItem;
-        }
-
-        return BuyItem::create([
-            'shopping_cart_id' => $shoppingCart->id,
-            'product_id' => $product->id,
-            'quantity' => 0,
-        ]);
     }
 }

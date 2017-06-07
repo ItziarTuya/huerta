@@ -35,6 +35,9 @@
             @endforeach
         </tbody>
     </table>
-    <a href="{{ url('/producer/products/create') }}" class="btn btn-primary">Create Product</a>
+    {{ $products->links() }}
+    <div>
+        <a href="{{ url('/producer/products/create') }}" class="btn btn-primary">Create Product</a>
+    </div>
 
 @endsection
