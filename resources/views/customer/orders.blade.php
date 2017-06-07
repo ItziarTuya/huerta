@@ -41,9 +41,13 @@
                 @endforelse
             </tbody>
         </table>
-                    <a href="{{ url('shop/index') }}" class="btn btn-info">Return to Shop</a>
 
         {{ $shoppingCarts->links() }}
+        @if (!Auth::user()->isAdmin())
+            <div>
+                <a href="{{ url('shop/index') }}" class="btn btn-info">Return to Shop</a>
+            </div>
+        @endif
 
     </div>
 

@@ -38,8 +38,10 @@
         </tbody>
     </table>
     {{ $products->links() }}
-    <div>
-        <a href="{{ url('/producer/products/create') }}" class="btn btn-primary">Create Product</a>
-    </div>
+    @if (!Auth::user()->isAdmin())
+        <div>
+            <a href="{{ url('/producer/products/create') }}" class="btn btn-primary">Create Product</a>
+        </div>
+    @endif
 
 @endsection
