@@ -9,7 +9,7 @@
                 <th>Name</th>
                 <th>E-mail</th>
                 <th>Role</th>
-                <th>Actions</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +18,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $roleNames[$user->role] }}</td>
-                    <td>
+                    <td class="text-center">
                         @if (!$user->trashed())
                             <a href="{{ url('/admin/users/'.$user->id.'/edit') }}" class="btn btn-sm btn-info">Edit</a>
                             <form method="POST" action="{{ url('/admin/users/'.$user->id) }}" class="form-button">

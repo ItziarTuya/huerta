@@ -10,9 +10,9 @@
 
                 <th class="text-right">Price</th>
                 <th class="text-right">Stock</th>
-                <th>Category</th>
-                <th>Picture</th>
-                <th>Actions</th>
+                <th class="text-center">Category</th>
+                <th class="text-center">Picture</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,9 +21,11 @@
                     <td>{{ $product->name }}</td>
                     <td class="text-right">{{ $product->getFormatedPrice() }}</td>
                     <td class="text-right">{{ $product->stock }} u</td>
-            	    <td>{{ $product->category }}</td>
-                    <td><img src="{{ $product->getPictureUrl() }}" alt="" style="width: 40px; height: 40px;" class="img-thumbnail"></td>
-                    <td>
+            	    <td class="text-center">{{ $product->category }}</td>
+                    <td class="text-center">
+                        <img src="{{ $product->getPictureUrl() }}" alt="{{ $product->name }}" style="width: 40px; height: 40px;" class="img-thumbnail">
+                    </td>
+                    <td class="text-center">
                         @if (!$product->trashed())
                             <a href="{{ url('/producer/products/'.$product->id.'/edit') }}" class="btn btn-sm btn-info">Edit</a>
                             <form method="POST" action="{{ url('/producer/products', $product->id) }}" class="form-button">

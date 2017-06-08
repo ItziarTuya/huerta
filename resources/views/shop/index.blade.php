@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="panel-heading">
+    <div class="panel-heading" style="padding-bottom: 15px;">
         <h2>Shopping at Marketplace</h2>
         <ul class="pull-right">
 

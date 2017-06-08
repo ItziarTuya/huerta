@@ -26,12 +26,11 @@
                 <p class="init">Where do we start?</p>
 
                 <div class="links">
-                    <a href="{{ url('producer/products') }}">Products</a>
-                    <a href="{{ url('producer/products/create') }}">Add Product</a>
-                    <a href="{{ url('user/edit') }}">Update profile</a>
-                    <a href="{{ url('producer/sales') }}">Show sales</a>
-                    <a href="{{ url('shop/index') }}">Go shopping</a>
-                    <a href="{{ url('shop/cart/'.$shoppingCart->id) }}">Show shopping cart</a>
+                    <a href="{{ url('producer/products') }}" >Products</a>
+                    <a href="{{ url('producer/sales') }}" >Sales</a>
+                    <a href="{{ url('shop/index') }}" >Go shopping</a>
+                    <a href="{{ url('shop/cart/'.$shoppingCart->id) }}" >Shopping cart</a>
+                    <a href="{{ url('user/edit') }}" >Profile</a>
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
