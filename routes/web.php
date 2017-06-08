@@ -14,7 +14,7 @@ Auth::routes();
 
 /* -- General -- */
 Route::get('/', 'WelcomeController@index')->name('welcome');
-Route::get('error/forbidden', function () { return view('error/forbidden'); });
+Route::get('error/forbidden', function () { return view('errors.forbidden'); });
 
 /* -- Producer -- */
 Route::group(['namespace' => 'Producer', 'prefix' => 'producer'], function () {
