@@ -22,7 +22,11 @@
                 @forelse ($shoppingCart->buyItems as $buyItem)
                     <tr>
                         <td>
-                            <a href="{{ url('shop/show/'.$buyItem->product->id) }}">{{ $buyItem->product->name }}</a>
+                            @if ($buyItem->product->trashed())
+                                <span class="text-danger">{{ $buyItem->product->name }} (Deleted)</span>
+                            @else
+                                <a href="{{ url('shop/show/'.$buyItem->product->id) }}">{{ $buyItem->product->name }}</a>
+                            @endif
                         </td>
                         <td class="text-right">{{ $buyItem->product->getFormatedPrice() }}</td>
                         <td class="text-right">{{ $buyItem->quantity }} u</td>
