@@ -19,7 +19,7 @@
                             @include('partial.form_cp', ['name' => 'email', 'type' => 'email', 'label' => 'E-Mail Address', 'value' => $user->email])
 
                             @slot('submit')
-                               Edit
+                               Save
                             @endslot
 
                         @endcomponent
