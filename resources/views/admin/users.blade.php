@@ -26,6 +26,12 @@
                                 {{ csrf_field() }}
                                 <button type="submit" class="btn btn-sm btn-danger"> Delete </button>
                             </form>
+                        @elseif(Auth::user()->isAdmin())
+                            <form method="POST" action="{{ url('/admin/users', $user->id) }}" class="form-button">
+                                <input type="hidden" name="_method" value="PUT" >
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-sm btn-primary"> Restore </button>
+                            </form>
                         @endif
                     </td>
                 </tr>

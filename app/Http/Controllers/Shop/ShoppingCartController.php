@@ -33,9 +33,32 @@ class ShoppingCartController extends Controller
 
     public function confirm(ShoppingCart $shoppingCart)
     {
-        $shoppingCart->confirm();
+        return view('shop.checkout')->with('shoppingCart', $shoppingCart);
+    }
 
-        return redirect('shop/checkout');
+    public function checkout(Request $request, ShoppingCart $shoppingCart)
+    {
+        $data = $request->all();
+        $validator = $this->validator($data);
+        if ($validator->fails()) {
+            return redirect('shop/cart/confirm/'.$shoppingCart->id)
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $shoppingCart->confirm($data['address']);
+
+        return redirect('customer/orders');
+    }
+
+    function validator($data) {
+        return Validator::make($data, [
+            'address' => 'required|string',
+            'cardholder' => 'required|string',
+            'cardNum' => 'required|ccn',
+            'cardDate' => 'required|date',
+            'cardcvc' => 'required|cvc',
+        ]);
     }
 
     /**

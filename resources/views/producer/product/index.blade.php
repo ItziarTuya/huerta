@@ -7,7 +7,9 @@
         <thead>
             <tr>
                 <th>Name</th>
-
+                @if (Auth::user()->isAdmin())
+                    <th>Producer E-Mail</th>
+                @endif
                 <th class="text-right">Price</th>
                 <th class="text-right">Stock</th>
                 <th class="text-center">Category</th>
@@ -19,6 +21,9 @@
             @foreach ($products as $product)
                 <tr @if ($product->trashed()) class="danger" @endif>
                     <td>{{ $product->name }}</td>
+                    @if (Auth::user()->isAdmin())
+                        <th>{{ $product->user->email }}</th>
+                    @endif
                     <td class="text-right">{{ $product->getFormatedPrice() }}</td>
                     <td class="text-right">{{ $product->stock }} u</td>
             	    <td class="text-center">{{ $product->category }}</td>
@@ -32,6 +37,12 @@
                                 <input type="hidden" name="_method" value="DELETE" >
                                 {{ csrf_field() }}
                                 <button type="submit" class="btn btn-sm btn-danger"> Delete </button>
+                            </form>
+                        @elseif(Auth::user()->isAdmin())
+                            <form method="POST" action="{{ url('/admin/products', $product->id) }}" class="form-button">
+                                <input type="hidden" name="_method" value="PUT" >
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-sm btn-primary"> Restore </button>
                             </form>
                         @endif
                     </td>

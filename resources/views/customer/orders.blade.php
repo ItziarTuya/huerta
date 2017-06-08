@@ -12,6 +12,9 @@
             <thead>
                 <tr>
                     <th class="text-left">Reference</th>
+                    @if (Auth::user()->isAdmin())
+                        <th>Costumer E-mail</th>
+                    @endif
                     <th class="text-center">Order date</th>
                     <th class="text-center">Order</th>
                     <th class="text-right">Price</th>
@@ -21,7 +24,9 @@
                 @forelse ($shoppingCarts as $shoppingCart)
                     <tr @if (Auth::user()->isAdmin() && $shoppingCart->isConfirmed()) class="success" @endif>
                         <td class="text-left">#orchard_{{ $shoppingCart->id }}</td>
-
+                        @if (Auth::user()->isAdmin())
+                            <th>{{ $shoppingCart->user->email }}</th>
+                        @endif
                         @if ($shoppingCart->isPending())
                             <td class="text-center">Pending</td>
                         @else

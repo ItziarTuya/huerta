@@ -38,7 +38,7 @@ class ShoppingCart extends Model
         return self::where([
             ['state', '=', 2], //vendido
             ['user_id', '=', Auth::user()->id],
-        ])->paginate(5);
+        ])->orderBy('confirmed_at', 'desc')->paginate(5);
     }
 
 
@@ -76,8 +76,9 @@ class ShoppingCart extends Model
         return $this->state == 2;
     }
 
-    public function confirm()
+    public function confirm($full_address)
     {
+        $this->full_address = $full_address;
         $this->state = 2;
         $this->confirmed_at = Carbon::now()->toDateTimeString();
         $this->save();

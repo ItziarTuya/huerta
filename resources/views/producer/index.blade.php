@@ -25,7 +25,7 @@
 
                 <p class="init">Where do we start?</p>
 
-                <div class="links">
+                <div class="links welcome-links">
                     <a href="{{ url('producer/products') }}" >Products</a>
                     <a href="{{ url('producer/sales') }}" >Sales</a>
                     <a href="{{ url('shop/index') }}" >Go shopping</a>

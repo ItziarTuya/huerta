@@ -55,6 +55,17 @@ class UserController extends AdminBaseController
         ]);
     }
 
+    public function restore(int $id)
+    {
+        $user = User::withTrashed()->find($id);
+
+        if (!is_null($user)) {
+            $user->restore();
+        }
+
+        return back();
+    }
+
     public function destroy(Request $request, User $user)
     {
         $user->delete();

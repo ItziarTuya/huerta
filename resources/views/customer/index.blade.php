@@ -25,7 +25,7 @@
                    <hr>
                 </div>
 
-                <div class="links">
+                <div class="links welcome-links">
                     <p class="init">Where do we start?</p>
                     <a href="{{ url('shop/index') }}">Go shopping</a>
                     <a href="{{ url('shop/cart/'.$shoppingCart->id) }}">Shopping cart</a>

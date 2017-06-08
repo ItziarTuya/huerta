@@ -12,4 +12,15 @@ class ProductController extends AdminBaseController
     {
         return view('producer.product.index', ['products' => Product::withTrashed()->paginate(5)]);
     }
+
+    public function restore(int $id)
+    {
+        $product = Product::withTrashed()->find($id);
+
+        if (!is_null($product)) {
+            $product->restore();
+        }
+
+        return back();
+    }
 }

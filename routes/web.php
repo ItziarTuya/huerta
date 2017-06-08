@@ -47,6 +47,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('/users/{user}/edit', 'UserController@update');
     Route::delete('/users/{user}', 'UserController@destroy');
     Route::get('/shoppingcarts', 'ShoppingCartController@index');
+    Route::put('/products/{id}', 'ProductController@restore');
+    Route::put('/users/{id}', 'UserController@restore');
 });
 
 /* -- Shop -- */
@@ -59,11 +61,11 @@ Route::group(['namespace' => 'Shop', 'prefix' => 'shop'], function () {
 
     /* -- Products -- */
     Route::get('/cart/{shoppingCart}', 'ShoppingCartController@index');
-    Route::post('/cart/confirm/{shoppingCart}', 'ShoppingCartController@confirm');
+    Route::get('/cart/confirm/{shoppingCart}', 'ShoppingCartController@confirm');
     Route::delete('/cart/clear/{shoppingCart}', 'ShoppingCartController@clear');
     Route::delete('/cart/{shoppingCart}/item/{buyItem}', 'ShoppingCartController@subtract');
+    Route::post('/cart/checkout/{shoppingCart}', 'ShoppingCartController@checkout');
 });
-Route::get('shop/checkout', function () { return view('shop/checkout'); });
 
 
 /* -- Customer -- */

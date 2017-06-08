@@ -65,10 +65,7 @@
                         {{ csrf_field() }}
                         <button type="submit" class="btn btn-warning"> Empty cart </button>
                     </form>
-                    <form method="POST" action="{{ url('/shop/cart/confirm', $shoppingCart->id) }}" class="form-button">
-                        {{ csrf_field() }}
-                        <button type="submit" class="btn btn-success"> Confirm </button>
-                    </form>
+                    <a href="{{ url('/shop/cart/confirm', $shoppingCart->id) }}" type="submit" class="btn btn-success"> Confirm </a>
                 @endif
             </div>
         @endif

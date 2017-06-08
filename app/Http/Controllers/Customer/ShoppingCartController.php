@@ -15,7 +15,7 @@ class ShoppingCartController extends Controller
     }
 
 
-    protected function orders() 
+    protected function orders()
     {
     	$shoppingCarts = ShoppingCart::getShoppingCarts();
         return view('customer.orders' , ['shoppingCarts' => $shoppingCarts]);

@@ -35,6 +35,10 @@ html, body {
     font-weight: 100;
 }
 
+.form-group > h3 {
+    margin-top: 4px;
+}
+
 .links > a {
     color: #636b6f;
     padding: 0 25px;
@@ -43,6 +47,8 @@ html, body {
     letter-spacing: .1rem;
     text-decoration: none;
     text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 .links > a:hover {
@@ -105,7 +111,20 @@ html, body {
 
 @media (min-width: $screen-sm-min) {
   // Inline-block all the things for "inline"
-  .form-inline .form-group {
-    margin-bottom: 15px;
-  }
+    .form-inline .form-group {
+        margin-bottom: 15px;
+    }
+
+}
+
+@media (max-width: $screen-sm-max) {
+    .welcome-links {
+        > a {
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            display: block;
+        }
+    }
+
 }

@@ -13,7 +13,7 @@
 
                 <p class="init">Where do we start?</p>
 
-                <div class="links">
+                <div class="links welcome-links">
                     <a href="{{ url('admin/products') }}">Products</a>
                     <a href="{{ url('admin/users') }}">Users</a>
                     <a href="{{ url('admin/shoppingcarts') }}">Shopping Carts</a>
